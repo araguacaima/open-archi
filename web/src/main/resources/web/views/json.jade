@@ -1,0 +1,15 @@
+extends ../layout
+
+html
+    head
+        title= title
+        block scripts
+            script.
+              $(document).ready(function () {
+                $('#element').jsonView(!{json})
+                $('#loader').hide()
+              });
+block content
+    h1= title
+    div(id='loader' class='loader')
+    div(id='element')

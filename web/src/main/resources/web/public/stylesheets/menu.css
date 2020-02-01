@@ -1,0 +1,151 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,300);
+#cssmenu {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, Sans-Serif, sans-serif;
+  line-height: 15px;
+  text-align: left;
+  z-index: 100;
+}
+#cssmenu > ul {
+  width: auto;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background: #ffffff;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  z-index: 101;
+}
+#cssmenu > ul li#responsive-tab {
+  display: none;
+  /* Hide for large screens */
+  z-index: 102;
+
+}
+#cssmenu > ul li {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  z-index: 103;
+}
+#cssmenu > ul li.right {
+  float: right;
+}
+#cssmenu > ul li.has-sub {
+  position: relative;
+  z-index: 104;
+}
+#cssmenu > ul li.has-sub:hover ul {
+  display: block;
+  z-index: 105;
+}
+#cssmenu > ul li.has-sub ul {
+  display: none;
+  width: 250px;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  background: #ffffff;
+  border: 1px solid #ece6e8;
+  border-bottom: 3px solid #d9ced2;
+  border-top: 0 none;
+  z-index: 106;
+}
+#cssmenu > ul li.has-sub ul li {
+  display: block;
+  z-index: 107;
+}
+#cssmenu > ul li.has-sub > a {
+  background-image: url('${BASE_PATH}/images/caret.png');
+  background-repeat: no-repeat;
+  background-position: 90% -95%;
+  z-index: 108;
+}
+#cssmenu > ul li.has-sub > a.active,
+#cssmenu > ul li.has-sub > a:hover {
+  background: #039BE5 url('${BASE_PATH}/images/caret.png') no-repeat;
+  background-position: 90% 195%;
+  z-index: 109;
+}
+#cssmenu > ul li a {
+  display: block;
+  padding: 12px 24px 11px 24px;
+  text-decoration: none;
+  color: #747474;
+  text-shadow: 0px 1px 0px #fff;
+  z-index: 110;
+}
+#cssmenu > ul li a.active,
+#cssmenu > ul li a:hover {
+  background: #039BE5;
+  color: #fff;
+  text-shadow: 0px 1px 0px #000;
+  z-index: 111;
+}
+@media (max-width: 600px) {
+  #cssmenu > ul {
+    width: 100%;
+    z-index: 101;
+  }
+  #cssmenu > ul li#responsive-tab {
+    display: block;
+    z-index: 102;
+  }
+  #cssmenu > ul li#responsive-tab a {
+    background: url('${BASE_PATH}/images/menu.png') no-repeat;
+    background-position: 95% -35%;
+    z-index: 103;
+  }
+  #cssmenu > ul li#responsive-tab a:hover {
+    background-color: #039BE5;
+    background-position: 95% 135%;
+    z-index: 104;
+  }
+  #cssmenu > ul li {
+    display: none;
+    z-index: 105;
+  }
+  #cssmenu > ul li.right {
+    float: none;
+  }
+  #cssmenu > ul li.has-sub {
+    position: relative;
+    z-index: 106;
+  }
+  #cssmenu > ul li.has-sub ul {
+    display: block;
+    position: static;
+    width: 100%;
+    background: #ffffff;
+    border: 0 none;
+    z-index: 107;
+  }
+  #cssmenu > ul li.has-sub ul li {
+    display: block !important;
+    z-index: 108;
+  }
+  #cssmenu > ul li.has-sub ul li a span {
+    display: block;
+    padding-left: 24px;
+    z-index: 109;
+  }
+  #cssmenu > ul li.has-sub > a {
+    background-image: none;
+    z-index: 110;
+  }
+}
+/* Make sure they show even if hidden in mobile view by JS */
+@media (min-width: 600px) {
+  #cssmenu > ul > li.collapsed {
+    display: inline-block !important;
+    *display: inline;
+    zoom: 1;
+    z-index: 111;
+  }
+  #cssmenu > ul ul li.collapsed {
+    display: block !important;
+    z-index: 112;
+  }
+}

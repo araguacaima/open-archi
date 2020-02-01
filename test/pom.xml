@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>test</artifactId>
+    <packaging>jar</packaging>
+    <name>Test</name>
+
+    <parent>
+        <groupId>com.araguacaima.open_archi</groupId>
+        <artifactId>parent</artifactId>
+        <version>1.0.1</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.araguacaima.open_archi</groupId>
+            <artifactId>persistence-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.araguacaima.open_archi</groupId>
+            <artifactId>persistence-architectural</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.araguacaima.open_archi</groupId>
+            <artifactId>persistence-bpm</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.araguacaima.open_archi</groupId>
+            <artifactId>persistence-uml-classes</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.araguacaima.open_archi</groupId>
+            <artifactId>persistence-er</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.araguacaima.open_archi</groupId>
+            <artifactId>persistence-flowchart</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.araguacaima.open_archi</groupId>
+            <artifactId>persistence-sequence</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.araguacaima.open_archi</groupId>
+            <artifactId>persistence-gantt</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.araguacaima.open_archi</groupId>
+            <artifactId>web</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- araguacaima libraries -->
+        <dependency>
+            <groupId>com.araguacaima</groupId>
+            <artifactId>commons-utils</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.araguacaima</groupId>
+            <artifactId>composite-specification</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.araguacaima.braas</groupId>
+            <artifactId>braas-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.1-api</artifactId>
+        </dependency>
+
+        <!-- Hibernate c3p0 connection pool -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-c3p0</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
+
+        <!-- Testing -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- SLF4J -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <defaultGoal>clean package</defaultGoal>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${org.apache.maven.plugins-maven-jar-plugin}</version>
+                <configuration>
+                    <finalName>open-archi</finalName>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>test-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${org.apache.maven.plugins-maven-compiler-plugin}</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${org.apache.maven.plugin-maven-surefire-plugin}</version>
+                <configuration>
+                    <skipTests>${maven.skipTests}</skipTests>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>target/test-classes/config</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>config/dev</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-logback</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>target/test-classes</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>config</directory>
+                                    <includes>
+                                        <include>logback.xml</include>
+                                    </includes>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                            <filters>
+                                <filter>config/dev/config.properties</filter>
+                            </filters>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

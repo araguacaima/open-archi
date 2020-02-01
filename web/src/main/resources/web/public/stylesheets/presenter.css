@@ -1,0 +1,342 @@
+/*
+One simple way of making a div fill its space,
+with allowances for the title (top) and the resize handle (bottom)
+*/
+#dataModelContainer {
+    position: absolute;
+    bottom: 14px;
+    left: 0;
+    right: 0;
+    top: 14px;
+}
+
+/*
+    DEMO STYLE
+*/
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+[id^=sidebar] {
+    /*width: 164px;*/
+    position: fixed;
+    top: 56px;
+    left: -164px;
+    height: calc(100% - 6.5rem);
+    height: -moz-calc(100% - 6.5rem);
+    height: -webkit-calc(100% - 6.5rem);
+    /*height: 100vh;*/
+    z-index: 999;
+    /*background: #7386D5;*/
+    background: white;
+    color: #fff;
+    transition: all 0.3s;
+    /*overflow-y: scroll;*/
+}
+
+[id^=sidebar].active {
+    left: 0;
+}
+
+#dismiss {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    background: #7386D5;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+#dismiss:hover {
+    background: #fff;
+    color: #7386D5;
+}
+
+[id^=sidebar] .sidebar-header {
+    padding: 3px;
+    background: buttonface;
+    color: black;
+    text-align: center;
+}
+
+[id^=sidebar] ul.components {
+    padding: 0;
+    /*border-bottom: 1px solid grey;*/
+}
+
+[id^=sidebar] ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+[id^=sidebar] ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+
+[id^=sidebar] ul li a:hover {
+    color: black;
+    background: #eeeeee;
+}
+
+[id^=sidebar] ul li.active > a, a[aria-expanded="true"] {
+    color: black;
+    background: #eeeeee;
+}
+
+[id^=sidebar] a[data-toggle="collapse"] {
+    position: relative;
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    /*padding-left: 30px !important;*/
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+a.download {
+    background: #fff;
+    color: #7386D5;
+}
+
+a.article, a.article:hover {
+    background: #6d7fcc !important;
+    color: #fff !important;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+[id^=content] {
+    width: 100%;
+    height: calc(100% - 1.5rem);
+    padding: 20px;
+    /*min-height: 100vh;*/
+    transition: all 0.3s;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+[id^=sidebar] {
+    /*border-radius: 20%;*/
+    position: fixed;
+    top: 0.7em;
+    left: 0.6em;
+    z-index: 10000;
+    color: white;
+    /*background-color: lightgray;*/
+}
+
+.tree, .tree ul {
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+.tree ul {
+    margin-left: 1em;
+    position: relative
+}
+
+.tree ul ul {
+    margin-left: .5em
+}
+
+.tree ul:before {
+    content: "";
+    display: block;
+    width: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    border-left: 1px solid
+}
+
+.tree li {
+    margin: 0;
+    padding: 0 1em;
+    line-height: 2em;
+    color: #369;
+    font-weight: 700;
+    position: relative
+}
+
+.tree ul li:before {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 0;
+    border-top: 1px solid;
+    margin-top: -1px;
+    position: absolute;
+    top: 1em;
+    left: 0
+}
+
+.tree ul li:last-child:before {
+    background: #fff;
+    height: auto;
+    top: 1em;
+    bottom: 0
+}
+
+.indicator {
+    margin-right: 5px;
+}
+
+.tree li a {
+    text-decoration: none;
+    color: #369;
+}
+
+.tree li button, .tree li button:active, .tree li button:focus {
+    text-decoration: none;
+    color: #369;
+    border: none;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+
+[id^=paletteDivBasic] {
+    height: 120px;
+    width: 124px;
+    overflow: hidden;
+    background-color: #F5F6F7;
+    border: solid 1px #DADBDC;
+    margin: 5px 0 0 16px;
+    z-index: 14;
+    border-radius: 4px;
+}
+
+[id^=paletteDivGeneral] {
+/*    height: -moz-calc(100% - 5.6rem);
+    height: -webkit-calc(100% - 5.6rem);
+    height: calc(100% - 5.6rem);*/
+    height: 100%;
+    width: 124px;
+    overflow-x: hidden;
+    background-color: #F5F6F7;
+    border: solid 1px #DADBDC;
+    margin: 5px 0 0 16px;
+    z-index: 14;
+    border-radius: 4px;
+}
+
+[id^=diagramsCanvas] {
+    justify-content: space-between;
+    z-index: -1000
+}
+
+[id^=infoDraggable] {
+    display: none;
+    vertical-align: top;
+    top: 20px;
+    left: 380px;
+    position: relative;
+}
+
+[id^=controlsDraggable] {
+    display: none;
+    vertical-align: top;
+    top: 20px;
+    left: 380px;
+    position: relative;
+    width: 380px;
+    padding-bottom: 10px
+}
+
+[id^=diagramDiv] {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.open-archi-background {
+    background: url('${BASE_PATH}/images/open-archi-20.png') no-repeat 98% 98%, url('${BASE_PATH}/images/polygon-blue-background.svg') no-repeat top left;
+    background-size: 40% auto, 100% 100%;
+}
+
+.window-common {
+    max-height: 100%;
+    border: none;
+}
+
+.window-caption-common {
+    min-height: 2.25rem;
+}
+
+.window-json {
+    min-width: 470px !important;
+    max-height: calc(100% - 2.25rem) !important;
+}
+
+.window-json-content {
+    max-height: calc(100% - 2.25rem) !important;
+    min-width: 470px;
+}
+
+.cellWidth {
+    max-width: 50% !important;
+}
+
+.cellScroll {
+    /*overflow: scroll;*/
+    height: 100%;
+    max-height: calc(100% - 4rem);
+}
+
+.custom-dialog {
+    width: 680px !important;
+    height: 100%;
+    max-height: 600px;
+    top: 13px !important;
+}
+
+.custom-wizard {
+
+}
+
+.centered-search-button {
+    max-height: calc(100% - 12px);
+    margin-right: 5px;
+    max-width: 250px;
+    height: 100%;
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.97);
+}

@@ -1,0 +1,25 @@
+//- list-group mixins
+mixin list-group(items)
+	ul.list-group
+	each item, index in items
+		li.list-group-item #{item}
+
+mixin list-group-links(items,active)
+	.list-group
+	each item, index in items
+		if(index === active)
+			a.list-group-item.active(href=basePath + "?#{item.url}") #{item.text}
+		else
+			a.list-group-item(href=basePath + "?#{item.url}") #{item.text}
+
+mixin list-group-item(url,active)
+	if(active)
+		a.list-group-item.active(href=basePath + "?#{url}")
+			block
+	else
+		a.list-group-item(href=basePath + "?#{url}")
+			block
+
+mixin list-group-custom()
+	.list-group
+		block

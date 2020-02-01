@@ -1,0 +1,27 @@
+<html>
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <script src="${BASE_PATH}/javascripts/diagrams/examples/sequenceDiagram.js"></script>
+    <script id="code">
+        $(document).ready(function () {
+            initSequenceDiagram("$$${divId}$$$");
+        });
+    </script>
+</head>
+<body>
+
+<h2 style="margin-top: 0; padding-top: 0; margin-bottom: 30px;">
+    Diagrama de secuencias
+</h2>
+<p>
+    Un <em> diagrama de secuencia </em> es un diagrama de interacción que muestra cómo las entidades operan entre sí
+    y en qué orden.
+</p>
+<p>
+    Hay muchos precedentes de soluciones en donde la determinicaicón del orden y el flujo de intearcción entre
+    componentes condicionan el modelo de solución. Esta es una solución clásica utilizando un digrama UML de
+    secuancias convencional para describir, a petición, el flujo de interacción entre los componentes de un modelo.
+</p>
+<div id="diagramDiv-$$${divId}$$$"></div>
+</body>
+</html>

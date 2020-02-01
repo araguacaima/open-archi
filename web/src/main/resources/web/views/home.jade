@@ -1,0 +1,327 @@
+extends layout
+
+block meta
+    meta(name="description", content="Open Archi")
+
+block content
+    .container
+        .row.align-items-center
+            .col-sm-6
+                h1= title
+            .col-sm-6.text-right
+                +a-btn-primary("https://github.com/araguacaima/open-archi")(target="blank")
+                    span.text-white
+                        i.fab.fa-github
+                        strong &nbsp;Clone
+    .container
+        video(controls)
+            source(src=basePath + "/videos/OpenArchi - Intro.webm", type="video/webm")
+    .container
+        hr
+        .well
+            p
+                | <strong>Open Archi is a social network for the management of enterprise architecture</strong>, using the concept of <strong>AMaaS</strong> - Architecture Model as a Service, including:
+                ul
+                    li Knowledge base of architectural components
+                    li Intergration with the main business concepts (TOGAF and C4Model based Architecture Framework):
+                        ul
+                            li Enterprise Architecture
+                            li Applications Architecture
+                            li Data Architecture
+                            li Technological Architecture
+                    li Whole capabilities fully APIfied
+                    li Administration and interrelation of component thru DevOps
+                    li Automation of communication about its evolution
+                    li Ease of design of architectural models
+                    li Collaborative construction
+                    li Automation of the application of business rules related to enterprise architecture
+    .container
+        +accordion("toc")
+            +accordion-item-success("ToC","toc")
+                .container
+                    .row
+                        a(href=basePath + "?#nutshell") OpenArchi in a Nutshell
+                    .row
+                        a(href=basePath + "?#tools") Tools
+                    .row
+                        a(href=basePath + "?#features") Features
+                    .row
+                        a(href=basePath + "?#inspiration") Inspiration
+                    .row
+                        a(href=basePath + "?#spec") Technical Specification
+                    .row
+                        a(href=basePath + "?#roadmap") Roadmap
+                    .row
+                        a(href=basePath + "?#detailed") Detailed Specification
+    .container#nutshell
+        h2 OpenArchi in a Nutshell
+        .row
+            +img-responsive-rounded("/images/open-archi-in-a-nutshell.gif", null, style="display: inherit;")
+
+    .container#tools
+        h2 Tools
+        .row
+            .col-lg-6
+                h2 Api
+                p
+                    | Api for open-archi model management
+                p
+                    a.btn.btn-primary(href=basePath + '/api', role='button') Go to Api »
+            .col-lg-6
+                +img-responsive-rounded("/images/new.gif", null, style="display: inherit;")(width="50px", height="50px")
+                h2 Desktop
+                p
+                    | Full desktop combining all tools
+                p
+                    a.btn.btn-primary(href=basePath + '/desktop', role='button') Go to Desktop »
+        //.row
+        //    .col-lg-6
+        //        h2 Prototyper
+        //        p
+        //            | A graphical editor to compose and reuse prototypes diagrams
+        //        p
+        //            a.btn.btn-primary(href=basePath + '/prototyper', role='button') Go to Prototyper »
+        //    .col-lg-6
+        //        h2 Editor
+        //        p
+        //            | A graphical editor to compose architecture diagrams based on prototypes
+        //        p
+        //            a.btn.btn-primary(href=basePath + '/editor', role='button') Go to editor »
+    .container#features
+        h2 Features
+        .row
+            .container
+                h3 A architecture social network on which the community is the who keeps it
+                p
+                    | CRUD of the entire exterprise architecture comes from the community (Wiki style)
+                p
+                    | Anyone inside the organization can "edit" or "create" content. Another can undo or alter this edition.
+                    | With a continuos usage, the "real" information possible will be revealed, but not only about
+                    | technological point of view. TOGAF model demands an interaction of all areas of the organization
+                    | each on adding a part of the entire enterprise estrategy and goals. With Open-Archi you could relate
+                    | a specific software class with the main objective the organization attemps to reach .
+                h3 Open-Archi is present at all times
+                p
+                    | Every piece of information (not only technological) can be archieved independently of a specific
+                    | project. Each of those pieces could, in the future, feed the design of a specific solution.
+                    | Information is fed automatically or manually, agnostically to a particular project or scenario. That
+                    | is, with Open-Archi the enterise architecture evolves always.
+                h3 Ease of integration
+                p
+                    | We have a layer of APIs so that anyone can manage the knowledge base of enterprise architecture
+                    | components or integrate it into their pipelines (DevOps)
+
+    .container#inspiration
+        h2 Inspiration
+        p
+            | For the conception of Open-Archi I have been inspired by 5 formidable initiatives:
+            .row
+                .col-sm-5
+                    +img-responsive-rounded("/images/cloud-craft.png", null, style="display: inherit;")
+                    | The amazing AWS architectures design tool&nbsp;
+                    a(href="https://cloudcraft.co")
+                        strong
+                            | Cloudcraft
+                .col-lg-6
+            .row
+                .col-lg-6
+
+                .col-sm-5
+                    +img-responsive-rounded("/images/c4model.png", null, style="display: inherit;")
+                    | The flexible abstraction of the&nbsp;
+                    a(href="http://c4model.com")
+                        strong
+                            | C4Model&nbsp;
+                    | for the design of architectures
+            .row
+                .col-sm-5
+                    +img-responsive-rounded("/images/archi-mate.png", null, style="display: inherit;")(width="300px;")
+                    | The proposed interrelation of functional, non-functional, business and technical elements for the
+                    | design of enterprise architectures present in the&nbsp;
+                    a(href="https://publications.opengroup.org/standards/archimate")
+                        strong
+                            | ArchiMate specification&nbsp;
+                    | and the&nbsp;
+                    a(href="http://pubs.opengroup.org/architecture/togaf9-doc/arch/chap41.html")
+                        strong
+                            | TOGAF framework
+                .col-lg-6
+            .row
+                .col-lg-6
+
+                .col-sm-5
+                    +img-responsive-rounded("/images/mermaidjs.png", null, style="display: inherit;")
+                    | The capability of generating diagrams from text as a simple markdown-like script as it is done by&nbsp;
+                    a(href="https://mermaidjs.github.io")
+                        strong
+                            | Mermaidjs
+            .row
+                .col-sm-5
+                    +img-responsive-rounded("/images/orpheus-db-architecture.png", null, style="display: inherit;")(width="300px;")
+                    | The OrpheusDB system which is a relational database with GIT-style versioning capabilities&nbsp;
+                    a(href="http://orpheus-db.github.io/")
+                        strong
+                            | OrpheusDB
+                .col-lg-6
+        p
+            | The integration of these initiatives results in the conception of this social network that seeks to
+            | satisfy the need for all functional and technical areas and all business units to make available to the
+            | entire organization the information they handle in their area of competence, so the teams that design
+            | business solutions can find unified everything necessary for effective decision-making, regarding business
+            | architecture
+
+    .container#spec
+        h2 Technical Specification
+        p
+            .table-responsive
+                table.table.table-striped
+                    thead
+                        tr
+                            th Feature
+                            th Technology
+                            th Site
+                    tbody
+                        tr
+                            td REST Api layer
+                            td Java Spark Framework
+                            td
+                                a(href="http://sparkjava.com")
+                                    | http://sparkjava.com
+                        tr
+                            td REST Documentation
+                            td OpenAPI Specification (formerly Swagger)
+                            td
+                                a(href="https://swagger.io")
+                                    | https://swagger.io
+                        tr
+                            td REST API Layer Sandbox
+                            td Swagger UI
+                            td
+                                a(href="https://swagger.io/swagger-ui")
+                                    | https://swagger.io/swagger-ui
+                        tr
+                            td Rules as a Service
+                            td JBoss Drools
+                            td
+                                a(href="https://www.drools.org")
+                                    | https://www.drools.org
+                        tr
+                            td Open Archi Graphical Editor
+                            td GoJS &reg;
+                            td
+                                a(href="https://gojs.net")
+                                    | https://gojs.net
+                        tr
+                            td Social Network (Core)
+                            td Open Social
+                            td
+                                a(href="https://opensocial.atlassian.net/wiki/spaces/OSD/pages/526570/Specs")
+                                    | https://opensocial.atlassian.net/wiki/spaces/OSD/pages/526570/Specs
+                        tr
+                            td Social Network (Impl)
+                            td Apache Rave
+                            td
+                                a(href="https://rave.apache.org")
+                                    | https://rave.apache.org
+                        tr
+                            td Knowledge base
+                            td PostgreSQL
+                            td
+                                a(href="https://www.postgresql.org")
+                                    | https://www.postgresql.org
+                        tr
+                            td Persistence
+                            td Hibernate JPA
+                            td
+                                a(href="http://hibernate.org")
+                                    | http://hibernate.org
+                        tr
+                            td Versioning
+                            td Orpheus DB
+                            td
+                                a(href="https://github.com/orpheus-db/implementation")
+                                    | https://github.com/orpheus-db/implementation
+    .container#roadmap
+        h2 Roadmap
+        .table-responsive
+            table.table.table-striped
+                tbody
+                    tr
+                        td
+                            | Implementation of C4-Model DB
+                            br
+                            +progress-bar-success(100)(style="margin-bottom: 5px;")
+                    tr
+                        td
+                            | Sandbox per organization
+                            br
+                            +progress-bar-danger(2)(style="margin-bottom: 5px;")
+                    tr
+                        td
+                            | Implementation of Archimate DB
+                            br
+                            +progress-bar-info(35)(style="margin-bottom: 5px;")
+                    tr
+                        td
+                            | API layer
+                            br
+                            +progress-bar-success(90)(style="margin-bottom: 5px;")
+                    tr
+                        td
+                            | Security on API layer
+                            br
+                            +progress-bar-success(60)(style="margin-bottom: 5px;")
+                    tr
+                        td
+                            | Architecture diagrams editor
+                            br
+                            +progress-bar-info(80)(style="margin-bottom: 5px;")
+                    tr
+                        td
+                            | Integration with Architect Solution Model
+                            br
+                            +progress-bar-info(30)(style="margin-bottom: 5px;")
+                    tr
+                        td
+                            | Connectors for automatic extraction
+                            br
+                            +progress-bar-danger(2)(style="margin-bottom: 5px;")
+                    tr
+                        td
+                            | Artificial Intelligence based models
+                            br
+                            +progress-bar-danger(2)(style="margin-bottom: 5px;")
+                    tr
+                        td
+                            | Use of Rules as a service for models validation
+                            br
+                            +progress-bar-success(85)(style="margin-bottom: 5px;")
+                    tr
+                        td
+                            | DevOps integration
+                            br
+                            +progress-bar-danger(2)(style="margin-bottom: 5px;")
+                    tr
+                        td
+                            | Social Network
+                            br
+                            +progress-bar-danger(2)(style="margin-bottom: 5px;")
+                    tr
+                        td
+                            | Open-Archi meta language (in the style of&nbsp;
+                            a(href="https://mermaidjs.github.io") mermaidjs
+                            | )
+                            br
+                            +progress-bar-danger(2)(style="margin-bottom: 5px;")
+                    tr
+                        td
+                            | Versioning (Orpheus DB)
+                            br
+                            +progress-bar-info(70)(style="margin-bottom: 5px;")
+    .container#detailed
+        h2 Detailed specification
+        +img-responsive-rounded("/images/above-under-the-hood.gif")(width="200px;")
+        p
+            | Wanna see what's under the hood?. Of course, as you can imagine, there is more info about the whole solution. Click below if you want to know more
+        p
+            a.btn.btn-primary(href=basePath + '/details', role='button') View details »

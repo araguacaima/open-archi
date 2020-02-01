@@ -1,0 +1,25 @@
+<html>
+<head>
+    <script src="${BASE_PATH}/javascripts/diagrams/examples/grouping.js"></script>
+    <script id="code">
+        $(document).ready(function () {
+            initGrouping("$$${divId}$$$");
+        });
+    </script>
+</head>
+
+<body>
+
+<h2 style="margin-top: 0; padding-top: 0; margin-bottom: 30px;">
+    Alternativa para la expansión de componentes
+</h2>
+<p>
+    Esto es sólo una forma de representar componentes que tienen otros componentes dentro de sí. La idea de fondo es
+    poder establecer vistas que varien en profundidas, dependiendo del consumidor. A álto nivel estarían las piezas
+    primarias de cualquier modelo. Dependiendo de la interacción del usuario será posible, sin salir de la pantalla
+    de visualización, expandir la visual, incorporando los elementos internos de cada componente, para entender
+    mejor su funcionamiento y al forma real como se interrelaciona con el resto
+</p>
+<div id="diagramDiv-$$${divId}$$$"></div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<html>
+<head>
+    <script src="${BASE_PATH}/javascripts/diagrams/examples/records.js"></script>
+    <script id="code">
+        $(document).ready(function () {
+            initRecords("$$${divId}$$$");
+        });
+    </script>
+</head>
+
+<body>
+<h2 style="margin-top: 0; padding-top: 0; margin-bottom: 30px;">
+    Relación y dependencias
+</h2>
+<p>En OpenArchi cada componente puede (o no) tener asociados un conjunto de características (features). En ocasiones
+    éstas características pueden anidarse, agruparse o relacionarse entre sí, específicamente unas con otras, para
+    poder
+    dar cabida a la solución de una necesidad o caso de uso particular
+</p>
+<p>De éste modo puede verse como relacionar un feature específico de un componente a otro. Esta práctica será útil
+    en
+    una avaluación del flujo end2end de algún caso de uso, identificando qué features deben ser resueltos
+    prioritariamente</p>
+<p>Otro uso de esta estrategia sería limitar la concatenaci´no de un feature a otro, o restringirlo de acuerdo con
+    ciertas condiciones</p>
+<div id="diagramDiv-$$${divId}$$$"></div>
+</body>
+</html>

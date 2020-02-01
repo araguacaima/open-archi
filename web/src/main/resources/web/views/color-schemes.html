@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+        .container {
+            font-family: Optima, sans-serif;
+            text-align: center;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .column-5 {
+            float: left;
+            width: 20%;
+        }
+
+        .column-2 {
+            float: left;
+            width: 50%;
+            height: 102px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+
+<h2 style="font-family: Optima, sans-serif;">Color Scheme</h2>
+<div class="container">
+    <div class="row">
+        <div class="column-5">
+            <div class="row">
+                <div class="column-2" style="background-color: DarkSlateGray; border: 8px solid #eaeded">
+                    <h4 style="color: #eaeded;">Architecture Model [Primary]</h4>
+                </div>
+                <div class="column-2" style="background-color: #eaeded; border: 8px solid DarkSlateGray">
+                    <h4 style="color: DarkSlateGray;">Architecture Model [Secondary]</h4>
+                </div>
+            </div>
+        </div>
+        <div class="column-5">
+            <div class="row">
+                <div class="column-2" style="background-color: LimeGreen; border: 8px solid #eafaea">
+                    <h4 style="color: #eafaea;">Layer [Primary]</h4>
+                </div>
+                <div class="column-2" style="background-color: #eafaea; border: 8px solid LimeGreen">
+                    <h4 style="color: LimeGreen;">Layer [Secondary]</h4>
+                </div>
+            </div>
+        </div>
+        <div class="column-5">
+            <div class="row">
+                <div class="column-2" style="background-color: #02172C; border: 8px solid #e5e7e9">
+                    <h4 style="color: #e5e7e9;">System [Primary]</h4>
+                </div>
+                <div class="column-2" style="background-color: #e5e7e9; border: 8px solid #02172C">
+                    <h4 style="color: #02172C;">System [Secondary]</h4>
+                </div>
+            </div>
+        </div>
+        <div class="column-5">
+            <div class="row">
+                <div class="column-2" style="background-color: #08427B; border: 8px solid #e6ecf1">
+                    <h4 style="color: #e6ecf1;">Container [Primary]</h4>
+                </div>
+                <div class="column-2" style="background-color: #e6ecf1; border: 8px solid #08427B">
+                    <h4 style="color: #08427B;">Container [Secondary]</h4>
+                </div>
+            </div>
+        </div>
+        <div class="column-5">
+            <div class="row">
+                <div class="column-2" style="background-color: #1368BD; border: 8px solid #e7eff8">
+                    <h4 style="color: #e7eff8;">Component [Primary]</h4>
+                </div>
+                <div class="column-2" style="background-color: #e7eff8; border: 8px solid #1368BD">
+                    <h4 style="color: #1368BD;">Component [Secondary]</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

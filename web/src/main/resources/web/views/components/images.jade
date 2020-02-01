@@ -1,0 +1,19 @@
+//- Image mixins
+mixin img-responsive(_src,_alt, _style)
+	img&attributes(attributes).img-responsive(src=basePath + _src, alt=_alt, style=_style)
+
+//- Image mixins
+mixin img-responsive-rounded(_src,_alt, _style)
+	img&attributes(attributes).img-responsive.img-rounded(src=basePath + _src, alt=_alt, style=_style)
+
+mixin img-responsive-center(_src,_alt, _style)
+	img&attributes(attributes).img-responsive.center-block(src=basePath + _src, alt=_alt, style=_style)
+
+mixin img-rounded(_src,_alt, _style)
+	img&attributes(attributes).img-rounded(src=basePath + _src, alt=_alt, style=_style)
+	
+mixin img-circle(_src,_alt, _style)
+	img&attributes(attributes).img-circle(src=basePath + _src, alt=_alt, style=_style)
+	
+mixin img-thumbnail(_src,_alt, _style)
+	img&attributes(attributes).img-thumbnail(src=basePath + _src, alt=_alt, style=_style)

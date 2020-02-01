@@ -1,0 +1,24 @@
+//- progress-bar mixins
+mixin progress-bar(value,type)
+	-if (!type) type = "primary"
+	.progress(style!=attributes.style)
+		.progress-bar(class="progress-bar-" + type, role='progressbar', aria-valuenow=value, aria-valuemin='0', aria-valuemax='100', style="width: " + value + "%;")
+			span.sr-only #{value}% Complete
+
+mixin progress-bar-success(value)
+	+progress-bar(value,"success")(attributes=attributes)
+	
+mixin progress-bar-info(value)
+	+progress-bar(value,"info")(attributes=attributes)
+	
+mixin progress-bar-warning(value)
+	+progress-bar(value,"warning")(attributes=attributes)
+	
+mixin progress-bar-danger(value)
+	+progress-bar(value,"danger")(attributes=attributes)
+	
+mixin progress-bar-primary(value)
+	+progress-bar(value,"primary")(attributes=attributes)
+	
+mixin progress-bar-striped(value)
+	+progress-bar(value,"striped")(attributes=attributes)

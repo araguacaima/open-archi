@@ -1,0 +1,37 @@
+<html>
+<head>
+    <script src="${BASE_PATH}/javascripts/diagrams/examples/columnResizingTool.js"></script>
+    <script src="${BASE_PATH}/javascripts/diagrams/examples/rowResizingTool.js"></script>
+    <script src="${BASE_PATH}/javascripts/diagrams/examples/columnResizing.js"></script>
+    <script id="code">
+        $(document).ready(function () {
+            initColumnResizing("$$${divId}$$$");
+        });
+    </script>
+</head>
+
+<body>
+
+<h2 style="margin-top: 0; padding-top: 0; margin-bottom: 30px;">
+    Adaptabilidad de las filas y columnas de las tablas
+</h2>
+<p>
+    Si se elige utilizar alguna tabla para representar meta data de alguna índole, o incluso como representación de
+    algún componente, será sencillo adaptar el tamaño de las filas y columnas a conveniencia.
+</p>
+<ul>
+    <li>Ubíquese en la línea derecha de la cabecera en la columna que desea ajustar</li>
+    <li>Arrastre la línea para ajustar el valor de ancho de la columna</li>
+    <li>Ubíquese en la línea inferior de la fila que desea ajustar</li>
+    <li>Arrastre la línea para ajustar el valor de ancho de la fila</li>
+</ul>
+<p>
+    <strong>Como todos lo demás elementos, se pueden combinar éstas caractrísticas con las presentes en otros
+        ejemplos
+        para crear capacidades más
+        complejas</strong>
+</p>
+<p><b>Puede notarse como éstos cambios se reflejan en el modelo lógico en tiempo real</b></p>
+<div id="diagramDiv-$$${divId}$$$"></div>
+</body>
+</html>

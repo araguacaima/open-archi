@@ -1,0 +1,47 @@
+<html>
+<head>
+    <script src="${BASE_PATH}/javascripts/diagrams/examples/updateDemo.js"></script>
+    <script id="code">
+        $(document).ready(function () {
+            initUpdateDemo("$$${divId}$$$", "$$${divId2}$$$");
+        });
+    </script>
+</head>
+
+<body>
+<div>
+    <h2 style="margin-top: 0; padding-top: 0; margin-bottom: 30px;">
+        Seguimiento de cambios
+    </h2>
+    <p>
+        Estamos en un modelo de operación colaborativa. El tracking de cambios es crucial. No sería sensato abrir la
+        operatividad yb mantenimiento de los modelos de solución a través de Open Archi, forzando a que cada quien
+        declare los cambios que ha ido haciendo. La herramienta, de manera automática deberá poder hacer un tracking de
+        cambios efectuados. incluso sería posible guardar una secuencia de estados, para volver a estados anteriores,
+        si fuere necesario.
+    </p>
+</div>
+<div style="width:100%; white-space:nowrap">
+    <div style="display: inline-block; vertical-align: top; width:50%">
+        <div id="blueDiagram-$$${divId}$$$" style="border: solid 1px blue; width:100%; height:300px;"></div>
+        <div style="width:100%; height:20px"></div>
+        <div id="greenDiagram-$$${divId2}$$$" style="border: solid 1px green; width:100%; height:300px"></div>
+    </div>
+    <div style="display: inline-block; vertical-align: top; width:50%">
+        <div style="width:100%; height:300px">
+            <input type="button" onclick="clearLog('$$${divId}$$$')" style="height:20px; font-size: 11px;" value="Clear Model log"/>
+            <div id="modelChangedLog-$$${divId}$$$"
+                 style="height:280px;border: solid 1px gray; font-family:Monospace; font-size:11px; overflow:scroll"></div>
+        </div>
+        <div style="width:100%; height:20px"></div>
+        <div style="">
+            <input type="button" onclick="undoDiagram('$$${divId}$$$')" style="height:20px; font-size: 11px;"
+                   value="Undo"/>
+            <input type="button" onclick="redoDiagram('$$${divId}$$$')" style="height:20px; font-size: 11px;"
+                   value="Redo"/>
+            <div id="undoDisplay-$$${divId}$$$" style="height:280px; border: solid 1px gray"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

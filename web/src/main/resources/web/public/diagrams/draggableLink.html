@@ -1,0 +1,28 @@
+<html>
+<head>
+    <script src="${BASE_PATH}/javascripts/diagrams/examples/draggableLink.js"></script>
+    <script id="code">
+        $(document).ready(function () {
+            initDraggableLink("$$${divId}$$$");
+        });
+    </script>
+</head>
+
+<body>
+
+<h2 style="margin-top: 0; padding-top: 0; margin-bottom: 30px;">
+    Restricciones para conectar componentes
+</h2>
+<p>
+    Cada componente puede definir reglas para conectarse a otros o para que otro pueda conectarsele.
+</p>
+<p>
+    Esto es particularmente útil para hacer permear estrategias globales de utilización de determinada piezxas de la
+    plataforma
+</p>
+<div style="width: 100%; display: flex; justify-content: space-between">
+    <div id="paletteDiv-$$${divId}$$$" style="width: 105px; margin-right: 2px; background-color: whitesmoke; border: solid 1px black"></div>
+    <div id="diagramDiv-$$${divId}$$$" style="flex-grow: 1; height: 620px; border: solid 1px black"></div>
+</div>
+</body>
+</html>

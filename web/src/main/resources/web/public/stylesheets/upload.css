@@ -1,0 +1,32 @@
+#upload-file {
+    display: none;
+}
+
+button[class^="choose-upload-button-"] {
+    display: block;
+    margin: 0 auto;
+}
+
+#upload-file-final-container {
+    display: none;
+    text-align: center;
+}
+
+#file-name {
+    color: #336699;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#upload-button {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 30px;
+}
+
+#error-message {
+    display: none;
+    text-align: center;
+    color: #c0392b;
+    margin: 20px 0 0 0;
+}

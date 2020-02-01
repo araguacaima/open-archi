@@ -1,0 +1,25 @@
+<html>
+<head>
+    <script src="${BASE_PATH}/javascripts/diagrams/examples/flowchart.js"></script>
+    <script id="code">
+        $(document).ready(function () {
+            initFlowchart("$$${divId}$$$");
+        });
+    </script>
+</head>
+
+<body>
+
+<h2 style="margin-top: 0; padding-top: 0; margin-bottom: 30px;">
+    Diagrama de flujos
+</h2>
+<p>
+    No importa de qué componente se trate, cualquiera podrá definir un diagrama de flujo para extender el
+    significado de su uso, o incluso detallar cómo sería su funcionamiento interno a nivel lógico.
+</p>
+<div style="width: 100%; display: flex; justify-content: space-between">
+    <div id="paletteDiv-$$${divId}$$$" style="width: 100px; margin-right: 2px; background-color: whitesmoke; border: solid 1px black"></div>
+    <div id="diagramDiv-$$${divId}$$$" style="flex-grow: 1; height: 750px; border: solid 1px black"></div>
+</div>
+</body>
+</html>

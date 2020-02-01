@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 125.612 126.00024"
+   version="1.1"
+   id="svg4398"
+   sodipodi:docname="windows-logo.svg"
+   width="125.612"
+   height="126.00024"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">
+  <metadata
+     id="metadata4404">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs4402" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     id="namedview4400"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="2.6818182"
+     inkscape:cx="63.14345"
+     inkscape:cy="62.79762"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4398" />
+  <path
+     d="m 0,17.839545 51.333642,-6.991111 0.02244,49.515453 -51.309189,0.292191 z M 51.309189,66.069032 51.349029,115.62764 0.03984,108.57338 0.03694,65.736608 Z M 57.532028,9.9338736 125.59618,0 v 59.734138 l -68.064152,0.54035 z M 125.612,66.535087 125.596,126.00024 57.531854,116.39375 57.436484,66.423751 Z"
+     id="path4396"
+     inkscape:connector-curvature="0"
+     style="fill:#00adef;stroke-width:1.43844092" />
+</svg>

@@ -1,0 +1,143 @@
+doctype html
+html(lang="en")
+head
+    script.
+        let basePath = '!{basePath}'
+    meta(name = "description", content = "OpenArchi Desktop")
+    meta(name="author", content="Alejandro Manuel Méndez Araguacaima [araguacaima@gmail.com]")
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+    meta(name="twitter:site", content="@araguacaima")
+    meta(name="twitter:creator", content="@araguacaima")
+    meta(name="twitter:card", content="summary")
+    meta(name="twitter:title", content="OpenArchi Apis")
+    meta(name="twitter:description", content="OpenArchi Apis")
+    meta(name="twitter:image", content="http://www.open-archi.com/images/open-archi.png")
+    meta(property="og:url", content="http://www.open-archi.com")
+    meta(property="og:title", content="OpenArchi")
+    meta(property="og:description", content="OpenArchi Desktop")
+    meta(property="og:type", content="website")
+    meta(property="og:image", content="http://www.open-archi.com/images/open-archi.png")
+    meta(property="og:image:secure_url", content="https://www.open-archi.com/images/open-archi.png")
+    meta(property="og:image:type", content="image/png")
+    meta(property="og:image:width", content="968")
+    meta(property="og:image:height", content="504")
+    meta(name="author", content="Alejandro Méndez")
+    meta(name="description", content="OpenArchi Desktop")
+    meta(name="keywords", content="OpenArchi, Api, Desktop, Metro4, Metro 4, CSS3, Javascript, HTML5, UI, Library, Web, Development, Framework")
+    meta(name="metro4:init", content="true")
+    meta(name="metro4:locale", content="en-EN")
+    meta(name="metro4:week_start", content="1")
+    link(rel="icon", href=basePath + "/favicon.ico")
+    link(rel='stylesheet', type='text/css', href=basePath + '/stylesheets/desktop.css')
+    link(rel='stylesheet', type='text/css', href=basePath + '/stylesheets/swagger-ui.css')
+    link(rel='stylesheet', type='text/css', href=basePath + '/stylesheets/dataInspector.css')
+    link(rel='stylesheet', type='text/css', href=basePath + '/stylesheets/debugInspector.css')
+    link(rel='stylesheet', type='text/css', href=basePath + '/stylesheets/palette.css')
+    //link(rel="stylesheet", type='text/css', href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css")
+    link(rel='stylesheet', type='text/css', href=basePath + '/javascripts/metro/css/metro-all.css')
+    link(rel="stylesheet", type='text/css', href=basePath + '/javascripts/jsoneditor/jsoneditor.min.css')
+    link(rel="stylesheet", type='text/css', href=basePath + '/javascripts/json-tree-viewer/jsonTree.css')
+    link(rel='stylesheet', type='text/css', href=basePath + '/stylesheets/presenter.css')
+    link(rel='stylesheet', type='text/css', href=basePath + '/stylesheets/spectrum.css')
+    link(rel='stylesheet', type='text/css', href=basePath + '/stylesheets/jquery-ui.css')
+    title= title
+body(style="overflow-y: hidden;")
+    div.desktop
+        div.task-bar
+            div.task-bar-section
+                button.task-bar-item#start-menu-toggle
+                    img.img-responsive(src=basePath + "/images/open-archi-26.png", style="display: inherit; margin: 0px 7px; height: 34px; width: 34px;")
+                div.start-menu(data-role="dropdown", data-toggle-element="#start-menu-toggle")
+                    div.start-menu-inner.h-100
+                        div.explorer
+                            ul.v-menu.w-100.bg-brandColor2.fg-white
+                                //li
+                                //    a(onclick="createWindowYoutube()") Youtube window
+                                //li
+                                //    a(onclick="createWindow()") New window
+                                //li
+                                //    a(onclick="createWindowModal()") Modal window
+                                li
+                                    a(onclick="createApiWindow()")
+                                        img.img-responsive(src=basePath + "/images/open-archi-api-logo.png", style="display: inherit;")
+                                        | APIs definition
+                                li
+                                    a(onclick="chooseModelType()")
+                                        img.img-responsive(src=basePath + "/images/open-archi-prototyper-logo.png", style="display: inherit;")
+                                        | Prototyper
+                                //li
+                                //    a(onclick="createEditorWindow()")
+                                //        img.img-responsive(src=basePath + "/images/open-archi-editor-logo.png", style="display: inherit;")
+                                //        | Editor
+                                li
+                                    ul.h-menu(style="background-color: inherit; color: inherit;")
+                                        li(style="float: right; width: 100%;")
+                                            a(onclick="createSamplesWindow()", style="padding: 0 2rem 0 2.5rem")
+                                                img.img-responsive(src=basePath + "/images/open-archi-samples-logo.png", style="display: inherit;")
+                                                | Samples
+                                li
+                                    a(onclick="openConfig()")
+                                        img.img-responsive(src=basePath + "/images/open-archi-config-logo.png", style="display: inherit;")
+                                        | Config
+            div.task-bar-section.tasks
+            div.task-bar-section.system-tray.ml-auto
+                span.mif-search.fg-white.flex-self-center.mr-4
+                input#search-button.flex-self-center.centered-search-button
+        div.window-area.open-archi-background
+    script(type='text/javascript', src='https://code.jquery.com/jquery-3.3.1.min.js')
+    script(type='text/javascript', src=basePath + '/javascripts/commons.js')
+    script(type='text/javascript', src=basePath + '/javascripts/desktop.js')
+    script(type='text/javascript', src=basePath + '/javascripts/swagger-ui-bundle.js')
+    script(type='text/javascript', src=basePath + '/javascripts/swagger-ui-standalone-preset.js')
+    script(type='text/javascript', src=basePath + '/javascripts/jquery-ui.js')
+    //script(type='text/javascript', src=basePath + '/javascripts/go.js')
+    script(type='text/javascript', src=basePath + '/javascripts/gojs-1.8.36.js')
+    //script(type='text/javascript', src=basePath + '/javascripts/gojs-2.0.15.js')
+    script.
+        const gojs = go.GraphObject.make;
+    script(type='text/javascript', src=basePath + '/javascripts/figures.js')
+    script(type='text/javascript', src=basePath + '/javascripts/underscore.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/common/openArchiCommon.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/common/openArchiToDiagram.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/common/openArchiFromDiagram.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/common/dataInspector.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/common/debugInspector.js')
+    script(type='text/javascript', src=basePath + '/javascripts/extendedBrush.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/common/editor.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/common/elements.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/elements/architectureModel.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/elements/componentModel.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/elements/component.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/elements/container.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/elements/layer.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/elements/system.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/elements/group.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/elements/element.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/desktop-diagram.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/common/palette.js')
+    //script(type='text/javascript', src='https://cdn.metroui.org.ua/v4/js/metro.min.js')
+    script(type='text/javascript', src=basePath + '/javascripts/metro/js/metro.js')
+    script(type='text/javascript', src=basePath + '/javascripts/jsoneditor/jsoneditor.min.js')
+    script(type='text/javascript', src=basePath + '/javascripts/json-tree-viewer/jsonTree.js')
+    script(type='text/javascript', src=basePath + '/javascripts/spectrum.js')
+    script.
+        let loadDesktopPrototyper = !{loadDesktopPrototyper};
+        let loadDesktopApi = !{loadDesktopApi};
+        let model = '!{model_}' === '' ? undefined : JSON.parse('!{model_}');
+        let diagramType = '!{diagramType_}' === '' ? undefined : JSON.parse('!{diagramType_}');
+        if (loadDesktopPrototyper) {
+            if (diagramType !== undefined && !_.isEmpty(diagramType) && diagramType.type !== 'DEFAULT') {
+                if (_.isEmpty(model)) {
+                    createPrototyperWindow(diagramType);
+                } else {
+                    createPrototyperWindowForModel(model);
+                }
+            } else {
+                chooseModelType();
+            }
+        }
+        if (loadDesktopApi) {
+            createApiWindow();
+        }

@@ -1,0 +1,28 @@
+//- modal
+mixin modal(title,id)
+	.modal.fade(id="#{id}", tabindex="-1", role="dialog", aria-labelledby="#{id}Label" aria-hidden="true")
+		.modal-dialog
+			.modal-content
+				.modal-header
+					button.close(type="button", data-dismiss="modal")
+						span(aria-hidden="true") &times;
+						span.sr-only Close
+					h4.modal-title(id="#{id}Label")= title
+				.modal-body
+					block
+				.modal-footer
+					button.btn.btn-default(type="button", data-dismiss="modal") Close
+mixin modal-force(title, id)
+	.modal.fade(id="#{id}", tabindex="-1", role="dialog", aria-labelledby="#{id}Label" aria-hidden="true" data-backdrop="static")
+		.modal-dialog.modal-dialog-centered(role="document")
+			.modal-content
+				.modal-header
+					h4.modal-title(id="#{id}Label")= title
+				.modal-body
+					block
+				.modal-footer
+					button.btn.btn-secondary(type="button", data-dismiss="modal") Dismiss
+					if attributes.more
+						button.btn.btn-info#more(type="button", onclick=attributes.more+"();") More »
+					if attributes.save
+						button.btn.btn-primary#save(type="button", onclick=attributes.save+"();") Save

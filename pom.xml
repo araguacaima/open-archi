@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright 2002-2013 the original author or authors.
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+	http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.araguacaima.open_archi</groupId>
+    <artifactId>parent</artifactId>
+    <version>1.0.1</version>
+    <packaging>pom</packaging>
+    <name>Parent</name>
+    <description>Parent</description>
+
+    <repositories>
+        <repository>
+            <id>oss.sonatype.org-snapshot</id>
+            <url>http://oss.sonatype.org/content/repositories/snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <properties>
+        <app.prefix>open-archi</app.prefix>
+        <aspectj.version>1.8.4</aspectj.version>
+        <backport-util-concurrent-backport-util-concurrent>3.1</backport-util-concurrent-backport-util-concurrent>
+        <com.araguacaima-commons-utils>1.5.4</com.araguacaima-commons-utils>
+        <com.araguacaima-composite-specification>1.2</com.araguacaima-composite-specification>
+        <com.araguacaima-orpheus-db>1.0.1-SNAPSHOT</com.araguacaima-orpheus-db>
+        <com.araguacaima-braas>1.2-SNAPSHOT</com.araguacaima-braas>
+        <org.eclipse.jetty-jetty-util>9.4.12.v20180830</org.eclipse.jetty-jetty-util>
+        <com.fasterxml.jackson.core-jackson-annotations>2.9.8</com.fasterxml.jackson.core-jackson-annotations>
+        <com.fasterxml.jackson.core-jackson-core>2.9.8</com.fasterxml.jackson.core-jackson-core>
+        <com.fasterxml.jackson.core-jackson-databind>2.9.8</com.fasterxml.jackson.core-jackson-databind>
+        <com.fasterxml.jackson.module-jackson-module-jsonSchema>2.9.8
+        </com.fasterxml.jackson.module-jackson-module-jsonSchema>
+        <com.github.rjeschke-txtmark>0.13</com.github.rjeschke-txtmark>
+        <com.google.api-client>1.22.0</com.google.api-client>
+        <com.google.apis-google-api-services-calendar>v3-rev254-1.22.0</com.google.apis-google-api-services-calendar>
+        <com.google.apis-google-api-services-drive>v3-rev82-1.22.0</com.google.apis-google-api-services-drive>
+        <com.google.apis-google-api-services-oauth2>v2-rev129-1.22.0</com.google.apis-google-api-services-oauth2>
+        <com.heroku.sdk-heroku-maven-plugin>0.4.4</com.heroku.sdk-heroku-maven-plugin>
+        <com.mchange-c3p0>0.9.5.4</com.mchange-c3p0>
+        <com.querydsl-querydsl-core>4.0.1</com.querydsl-querydsl-core>
+        <com.sparkjava-spark-core>2.8.0</com.sparkjava-spark-core>
+        <com.sparkjava-spark-template-jade>2.7.1</com.sparkjava-spark-template-jade>
+        <com.thoughtworks.paranamer-paranamer>2.7</com.thoughtworks.paranamer-paranamer>
+        <commons-io-commons-io>2.6</commons-io-commons-io>
+        <cz.jirutka.rsql-rsql-parser>2.1.0</cz.jirutka.rsql-rsql-parser>
+        <dandelion.datatables.version>0.9.3</dandelion.datatables.version>
+        <de.sven-jacobs-loremipsum>1.0</de.sven-jacobs-loremipsum>
+        <ehcache.version>2.6.6</ehcache.version>
+        <hamcrest.version>1.3</hamcrest.version>
+        <httpclient>4.2.5</httpclient>
+        <jadira-usertype-core.version>3.1.0.CR8</jadira-usertype-core.version>
+        <java.version>1.8</java.version>
+        <javax.activation-activation>1.1.1</javax.activation-activation>
+        <javax.el.version>2.2</javax.el.version>
+        <javax.inject-javax.inject>1</javax.inject-javax.inject>
+        <javax.validation-validation-api>2.0.0.Final</javax.validation-validation-api>
+        <jaxb-impl.version>2.2.7</jaxb-impl.version>
+        <jaxb.api.version>2.2.7</jaxb.api.version>
+        <jodatime.version>2.3</jodatime.version>
+        <json>20090211</json>
+        <junit.version>4.11</junit.version>
+        <logback.version>1.2.3</logback.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.version>3.0</maven.compiler.version>
+        <maven.skipTests>true</maven.skipTests>
+        <maven.surefire.version>2.13</maven.surefire.version>
+        <net.sf.jxls-jxls-core>1.0.6</net.sf.jxls-jxls-core>
+        <net.sf.jxls-jxls-reader>1.0.6</net.sf.jxls-jxls-reader>
+        <org.apache.commons-beanutils>1.9.1</org.apache.commons-beanutils>
+        <org.apache.commons-commons-collections4>4.2</org.apache.commons-commons-collections4>
+        <org.apache.commons-commons-lang3>3.5</org.apache.commons-commons-lang3>
+        <org.apache.commons-commons-math3>3.6.1</org.apache.commons-commons-math3>
+        <org.apache.commons-fileupload>1.2.2</org.apache.commons-fileupload>
+        <org.apache.logging.log4j-core>2.8.2</org.apache.logging.log4j-core>
+        <org.apache.maven-maven-core>3.2.2</org.apache.maven-maven-core>
+        <org.apache.maven-maven-plugin-api>3.0</org.apache.maven-maven-plugin-api>
+        <org.apache.maven.plugin-maven-jar-plugin>2.4</org.apache.maven.plugin-maven-jar-plugin>
+        <org.apache.maven.plugin-maven-source-plugin>2.4</org.apache.maven.plugin-maven-source-plugin>
+        <org.apache.maven.plugin-maven-surefire-plugin>2.12.4</org.apache.maven.plugin-maven-surefire-plugin>
+        <org.apache.maven.plugin-tools-maven-plugin-annotations>3.4
+        </org.apache.maven.plugin-tools-maven-plugin-annotations>
+        <org.apache.maven.plugins-maven-dependency-plugin>3.1.1</org.apache.maven.plugins-maven-dependency-plugin>
+        <org.apache.maven.plugins-maven-assembly-plugin>3.1.0</org.apache.maven.plugins-maven-assembly-plugin>
+        <org.apache.maven.plugins-maven-compiler-plugin>2.3.2</org.apache.maven.plugins-maven-compiler-plugin>
+        <org.apache.maven.plugins-maven-jar-plugin>3.0.2</org.apache.maven.plugins-maven-jar-plugin>
+        <org.codehaus.mojo-exec-maven-plugin>1.6.0</org.codehaus.mojo-exec-maven-plugin>
+        <org.apache.maven.shared-maven-invoker>2.2</org.apache.maven.shared-maven-invoker>
+        <org.bitbucket.mstrobel-procyon-compilertools>0.5.27</org.bitbucket.mstrobel-procyon-compilertools>
+        <org.codehaus.mojo-aspectj-maven-plugin>1.8</org.codehaus.mojo-aspectj-maven-plugin>
+        <org.codehaus.plexus-plexus-utils>3.0.8</org.codehaus.plexus-plexus-utils>
+        <org.fusesource.jansi-jansi>1.16</org.fusesource.jansi-jansi>
+        <org.hibernate-version>5.3.1.Final</org.hibernate-version>
+        <org.wildfly.transaction-wildfly-transaction-client>1.1.3.Final
+        </org.wildfly.transaction-wildfly-transaction-client>
+        <org.hibernate-hibernate-ogm-core>5.4.1.Final</org.hibernate-hibernate-ogm-core>
+        <org.hibernate.javax.persistence-hibernate-jpa-2.1-api>1.0.2.Final
+        </org.hibernate.javax.persistence-hibernate-jpa-2.1-api>
+        <org.jsoup-jsoup>1.8.1</org.jsoup-jsoup>
+        <org.mockito-mockito-core>1.9.5</org.mockito-mockito-core>
+        <org.postgresql-postgresql>42.2.4</org.postgresql-postgresql>
+        <org.reflections-reflections>0.9.9-RC1</org.reflections-reflections>
+        <org.scala-lang-scala-library>2.10.4</org.scala-lang-scala-library>
+        <org.slf4j-slf4j-api>1.7.7</org.slf4j-slf4j-api>
+        <org.slf4j-slf4j-simple>1.7.25</org.slf4j-slf4j-simple>
+        <org.threeten-threetenbp>1.3.7</org.threeten-threetenbp>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <rome.version>1.5.0</rome.version>
+        <slf4j.version>1.7.26</slf4j.version>
+        <snowdrop.version>4.0.0.Final</snowdrop.version>
+        <validation.version>1.0.0.GA</validation.version>
+        <xerces-xercesImpl>2.9.1</xerces-xercesImpl>
+        <sparkPac4j.version>3.0.0</sparkPac4j.version>
+        <pac4j.version>3.8.3</pac4j.version>
+        <com.jayway.jsonpath-json-path>2.3.0</com.jayway.jsonpath-json-path>
+        <com.github.bohnman-squiggly-filter-jackson>1.3.11</com.github.bohnman-squiggly-filter-jackson>
+        <com.fasterxml.jackson.dataformat-jackson-dataformat-yaml>2.7.1
+        </com.fasterxml.jackson.dataformat-jackson-dataformat-yaml>
+        <de.neuland-bfi-jade4j>1.2.5</de.neuland-bfi-jade4j>
+        <com.sun.mail-javax.mail>1.6.2</com.sun.mail-javax.mail>
+        <com.google.code.gson-gson>2.8.5</com.google.code.gson-gson>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${com.fasterxml.jackson.core-jackson-annotations}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>${org.hibernate-version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-c3p0</artifactId>
+                <version>${org.hibernate-version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate.javax.persistence</groupId>
+                <artifactId>hibernate-jpa-2.1-api</artifactId>
+                <version>${org.hibernate.javax.persistence-hibernate-jpa-2.1-api}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate.ogm</groupId>
+                <artifactId>hibernate-ogm-core</artifactId>
+                <version>${org.hibernate-hibernate-ogm-core}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate.ogm</groupId>
+                <artifactId>hibernate-ogm-mongodb</artifactId>
+                <version>${org.hibernate-version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.wildfly.transaction</groupId>
+                <artifactId>wildfly-transaction-client</artifactId>
+                <version>${org.wildfly.transaction-wildfly-transaction-client}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.araguacaima.open_archi</groupId>
+                <artifactId>persistence-core</artifactId>
+                <version>${project.version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.araguacaima.open_archi</groupId>
+                <artifactId>persistence-architectural</artifactId>
+                <version>${project.version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.araguacaima.open_archi</groupId>
+                <artifactId>persistence-bpm</artifactId>
+                <version>${project.version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.araguacaima.open_archi</groupId>
+                <artifactId>persistence-er</artifactId>
+                <version>${project.version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.araguacaima.open_archi</groupId>
+                <artifactId>persistence-flowchart</artifactId>
+                <version>${project.version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.araguacaima.open_archi</groupId>
+                <artifactId>persistence-gantt</artifactId>
+                <version>${project.version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.araguacaima.open_archi</groupId>
+                <artifactId>persistence-sequence</artifactId>
+                <version>${project.version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.araguacaima.open_archi</groupId>
+                <artifactId>persistence-uml-classes</artifactId>
+                <version>${project.version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.araguacaima.open_archi</groupId>
+                <artifactId>persistence-component</artifactId>
+                <version>${project.version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.araguacaima.open_archi</groupId>
+                <artifactId>persistence-commons</artifactId>
+                <version>${project.version}</version>
+                <scope>compile</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>javax.servlet</groupId>
+                        <artifactId>servlet-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!-- Testing -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-all</artifactId>
+                <version>${org.mockito-mockito-core}</version>
+                <scope>test</scope>
+            </dependency>
+
+
+            <!-- Databases -->
+
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${org.postgresql-postgresql}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.threeten</groupId>
+                <artifactId>threetenbp</artifactId>
+                <version>${org.threeten-threetenbp}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>net.sf.ehcache</groupId>
+                <artifactId>ehcache-core</artifactId>
+                <version>${ehcache.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjrt</artifactId>
+                <version>${aspectj.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectj.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${org.apache.commons-commons-lang3}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io-commons-io}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cz.jirutka.rsql</groupId>
+                <artifactId>rsql-parser</artifactId>
+                <version>${cz.jirutka.rsql-rsql-parser}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.sparkjava</groupId>
+                <artifactId>spark-core</artifactId>
+                <version>${com.sparkjava-spark-core}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.sparkjava</groupId>
+                <artifactId>spark-template-jade</artifactId>
+                <version>${com.sparkjava-spark-template-jade}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${org.apache.commons-commons-collections4}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <!-- araguacaima libraries -->
+            <dependency>
+                <groupId>com.araguacaima</groupId>
+                <artifactId>commons-utils</artifactId>
+                <version>${com.araguacaima-commons-utils}</version>
+                <scope>compile</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.cxf</groupId>
+                        <artifactId>cxf-bundle-jaxrs</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>com.araguacaima</groupId>
+                <artifactId>composite-specification</artifactId>
+                <version>${com.araguacaima-composite-specification}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.araguacaima</groupId>
+                <artifactId>orpheus-db</artifactId>
+                <version>${com.araguacaima-orpheus-db}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.hibernate</groupId>
+                        <artifactId>*</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>com.araguacaima.braas</groupId>
+                <artifactId>braas-core</artifactId>
+                <version>${com.araguacaima-braas}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-util</artifactId>
+                <version>${org.eclipse.jetty-jetty-util}</version>
+            </dependency>
+
+            <!-- Database connection pool -->
+
+            <dependency>
+                <groupId>com.mchange</groupId>
+                <artifactId>c3p0</artifactId>
+                <version>${com.mchange-c3p0}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <!-- Logging with SLF4J & LogBack -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jul-to-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.querydsl</groupId>
+                <artifactId>querydsl-core</artifactId>
+                <version>${com.querydsl-querydsl-core}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.pac4j</groupId>
+                <artifactId>spark-pac4j</artifactId>
+                <version>${sparkPac4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.pac4j</groupId>
+                <artifactId>pac4j-core</artifactId>
+                <version>${pac4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.pac4j</groupId>
+                <artifactId>pac4j-oauth</artifactId>
+                <version>${pac4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.pac4j</groupId>
+                <artifactId>pac4j-openid</artifactId>
+                <version>${pac4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.pac4j</groupId>
+                <artifactId>pac4j-saml</artifactId>
+                <version>${pac4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.pac4j</groupId>
+                <artifactId>pac4j-cas</artifactId>
+                <version>${pac4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.pac4j</groupId>
+                <artifactId>pac4j-http</artifactId>
+                <version>${pac4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.pac4j</groupId>
+                <artifactId>pac4j-oidc</artifactId>
+                <version>${pac4j.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>javax.mail</groupId>
+                        <artifactId>mail</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.pac4j</groupId>
+                <artifactId>pac4j-jwt</artifactId>
+                <version>${pac4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.pac4j</groupId>
+                <artifactId>pac4j-sql</artifactId>
+                <version>${pac4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.pac4j</groupId>
+                <artifactId>pac4j-ldap</artifactId>
+                <version>${pac4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.pac4j</groupId>
+                <artifactId>pac4j-mongo</artifactId>
+                <version>${pac4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.pac4j</groupId>
+                <artifactId>pac4j-kerberos</artifactId>
+                <version>${pac4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.pac4j</groupId>
+                <artifactId>pac4j-couch</artifactId>
+                <version>${pac4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.jayway.jsonpath</groupId>
+                <artifactId>json-path</artifactId>
+                <version>${com.jayway.jsonpath-json-path}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.bohnman</groupId>
+                <artifactId>squiggly-filter-jackson</artifactId>
+                <version>${com.github.bohnman-squiggly-filter-jackson}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.dataformat</groupId>
+                <artifactId>jackson-dataformat-yaml</artifactId>
+                <version>${com.fasterxml.jackson.core-jackson-core}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>de.neuland-bfi</groupId>
+                <artifactId>jade4j</artifactId>
+                <version>${de.neuland-bfi-jade4j}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.sun.mail</groupId>
+                <artifactId>javax.mail</artifactId>
+                <version>${com.sun.mail-javax.mail}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${com.google.code.gson-gson}</version>
+                <scope>compile</scope>
+            </dependency>
+
+        </dependencies>
+
+    </dependencyManagement>
+
+    <modules>
+        <module>persistence/diagrams/architectural</module>
+        <module>persistence/diagrams/bpm</module>
+        <module>persistence/diagrams/classes</module>
+        <module>persistence/diagrams/core</module>
+        <module>persistence/diagrams/er</module>
+        <module>persistence/diagrams/flowchart</module>
+        <module>persistence/diagrams/gantt</module>
+        <module>persistence/diagrams/sequence</module>
+        <module>persistence/diagrams/component</module>
+        <module>persistence/commons</module>
+        <module>web</module>
+        <module>test</module>
+    </modules>
+
+    <build>
+        <defaultGoal>clean install</defaultGoal>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <!-- upgrade to 3.0 triggers JDK 6 bug when executing mvn install cobertura:cobertura -->
+                <version>${org.apache.maven.plugins-maven-compiler-plugin}</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${org.apache.maven.plugin-maven-surefire-plugin}</version>
+                <configuration>
+                    <skipTests>${maven.skipTests}</skipTests>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>local</id>
+            <properties>
+                <downloadSources>true</downloadSources>
+                <downloadJavadocs>false</downloadJavadocs>
+            </properties>
+        </profile>
+    </profiles>
+</project>

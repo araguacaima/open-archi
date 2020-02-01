@@ -1,0 +1,119 @@
+extends layout
+
+block meta
+    meta(name="description", content="OpenArchi Apis")
+
+append styles
+    link(rel='stylesheet', type='text/css', href=basePath + '/stylesheets/swagger-ui.css')
+
+block content
+    .container
+        h1= title
+    .container
+        #body
+            h1.text-center#message
+            table.table(class="table-condensed")
+                thead
+                    tr
+                        each head in header
+                            th
+                                h4(style="color: black") #{head}
+                if accounts
+                    tbody
+                        each account in accounts
+                            tr
+                                td
+                                    input.account_checkboxes(type="checkbox", name="account_checkboxes", value=account.email, style="padding-left: 5px;", checked=account.enabled)
+                                td(style="color: black;font-style: italic") #{account.login}
+                                td(style="color: black;font-weight: bold;") #{account.email}
+                                each role in roles
+                                    td
+                                        input.role_checkboxes(type="checkbox", name="role_checkboxes", value=account.email + "_" + role, checked=false)
+
+append scripts
+    script.
+        let accounts = !{accounts_};
+        $(function () {
+            const rolesCheckboxes = $('.role_checkboxes');
+            const accountCheckboxes = $('.account_checkboxes');
+
+            accounts.forEach(function (account) {
+                var accountRoles = account.roles;
+                var accountEmail = account.email;
+                if (accountRoles) {
+                    accountRoles.forEach(function (accountRole) {
+                        const roleCheckbox = accountEmail + "_" + accountRole.name;
+                        rolesCheckboxes.each(function () {
+                            const role = $(this);
+                            const roleValue = role.val();
+                            if (roleValue === roleCheckbox) {
+                                role.prop('checked', true);
+                            }
+                        })
+                    });
+                }
+            });
+
+            function toggleEnable(email, approved) {
+                $.ajax({
+                    url: "/admin",
+                    data: JSON.stringify({
+                        email: email,
+                        approved: approved
+                    }),
+                    type: 'PATCH',
+                    dataType: "json",
+                    crossDomain: true,
+                    contentType: "application/json",
+                    xhr: function () {
+                        return window.XMLHttpRequest === null || new window.XMLHttpRequest().addEventListener === null
+                            ? new window.ActiveXObject("Microsoft.XMLHTTP")
+                            : $.ajaxSettings.xhr();
+                    }
+                }).done(function (data, textStatus, response) {
+                    if (response.status !== 200) {
+                        $("[value='" + email + "']").prop('checked', !approved);
+                    }
+                });
+            }
+
+            function toggleRole(email, approved, role) {
+                $.ajax({
+                    url: "/admin",
+                    data: JSON.stringify({
+                        email: email,
+                        approved: approved,
+                        role: role
+                    }),
+                    type: 'PATCH',
+                    dataType: "json",
+                    crossDomain: true,
+                    contentType: "application/json",
+                    xhr: function () {
+                        return window.XMLHttpRequest === null || new window.XMLHttpRequest().addEventListener === null
+                            ? new window.ActiveXObject("Microsoft.XMLHTTP")
+                            : $.ajaxSettings.xhr();
+                    }
+                }).done(function (data, textStatus, response) {
+                    if (response.status !== 200) {
+                        var roleValue = email + "_" + role;
+                        $("[value='" + roleValue + "']").prop('checked', !approved);
+                    }
+                });
+            }
+
+            accountCheckboxes.change(function (e) {
+                const account = $(e.currentTarget);
+                const accountValue = account.val();
+                toggleEnable(accountValue, account[0].checked);
+            });
+
+            rolesCheckboxes.change(function (e) {
+                const role = $(e.currentTarget);
+                const roleValue = role.val();
+                const split = roleValue.split("_");
+                const account = split[0];
+                const roleName = split[1];
+                toggleRole(account, role[0].checked, roleName);
+            });
+        });

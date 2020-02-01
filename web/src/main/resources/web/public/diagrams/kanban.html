@@ -1,0 +1,28 @@
+<html>
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+    <script src="${BASE_PATH}/javascripts/diagrams/examples/kanban.js"></script>
+    <script id="code">
+        $(document).ready(function () {
+            initKanban("$$${divId}$$$");
+        });
+    </script>
+</head>
+
+<body>
+
+<h2 style="margin-top: 0; padding-top: 0; margin-bottom: 30px;">
+    ¿Kanban boards?
+</h2>
+<p>¿Porqué no?. La idea no sería suplantar el uso de herramientas realmente dedicadas a la gestión, sino aprovechar
+    la riqueza visual que nos ofrecen los tableros Kanban para identificar tareas. Recordemos que OpenArchi estará
+    conectado con las principales herramientas de gestion de evolución de los requerimientos. Si algún consumidor
+    quisiera conocer qué le falta a la pieza o componente que quiere usar para culminar un conjunto de features que
+    satisfacen su necesidad, podríamos extraer esa info desde Jira (por ejemplo), asociada la pieza en cuestión, para
+    que tenga
+    una visual sencilla y resumida del avance de las tareas que deben culminarse para que pueda utilizar tal
+    componente. Sería análogo a la visualización tipo "Gantt"
+</p>
+<div id="diagramDiv-$$${divId}$$$"></div>
+</body>
+</html>

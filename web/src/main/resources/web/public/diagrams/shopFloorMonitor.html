@@ -1,0 +1,42 @@
+<html>
+<head>
+    <script src="${BASE_PATH}/javascripts/diagrams/examples/shopFloorMonitor.js"></script>
+    <script id="code">
+        $(document).ready(function () {
+            const nodeDataArray = [
+                {"key": "1", "text": "Switch 23", "type": "S2", "loc": "195 225"},
+                {"key": "2", "text": "Machine 17", "type": "M4", "loc": "183.5 94"},
+                {"key": "3", "text": "Panel 7", "type": "P2", "loc": "75 211.5"},
+                {"key": "4", "text": "Switch 24", "type": "S3", "loc": "306 225"},
+                {"key": "5", "text": "Machine 18", "type": "M5", "loc": "288.5 95"},
+                {"key": "6", "text": "Panel 9", "type": "P1", "loc": "426 211"},
+                {"key": "7", "text": "Instr 3", "type": "I1", "loc": "-50 218"}];
+                    const linkDataArray = [
+                {"from": "1", "to": "2"},
+                {"from": "1", "to": "3"},
+                {"from": "1", "to": "4"},
+                {"from": "4", "to": "5"},
+                {"from": "4", "to": "6"},
+                {"from": "7", "to": "2"},
+                {"from": "7", "to": "3"}
+            ];
+            initShopFloorMonitor("$$${divId}$$$", nodeDataArray, linkDataArray);
+        });
+    </script>
+</head>
+
+<body>
+
+<h2 style="margin-top: 0; padding-top: 0; margin-bottom: 30px;">
+    Otro modo de visualizar secuencias y flujos
+</h2>
+<p>
+    Este ejemplo muestra un monitoreo contínuo del estado de un número de componentes.
+    Cada dos segundos actualiza la pantalla, mostrando algunos problemas aleatorios resaltando el componente donde
+    se halló la falla.
+    Si lograramos incorporar información de reliability podríamos representar posibles lack, cuellos de botella y
+    casos bordes en tiempo de diseño.
+</p>
+<div id="diagramDiv-$$${divId}$$$"></div>
+</body>
+</html>

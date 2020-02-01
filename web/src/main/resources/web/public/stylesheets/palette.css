@@ -1,0 +1,54 @@
+
+.draggable {
+    display: inline-block;
+    vertical-align: top;
+    border: 1px solid #BBB;
+    border-radius: 4px;
+    background-color: #F5F5F5;
+
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 500;
+}
+
+.handle {
+    background-color: lightblue;
+    cursor: move;
+    text-align: center;
+    font: bold 12px sans-serif;
+}
+
+#infoDraggable {
+    font: 12px helvetica, sans-serif;
+}
+
+
+#myExamples {
+    width: 100%;
+    overflow: hidden;
+}
+
+#myInfo {
+    width: 100%;
+    overflow: hidden;
+}
+
+#paletteDiv {
+    background-color: #F5F5F5;
+    width: 100%;
+    height: 100%;
+}
+
+/*
+One simple way of making a div fill its space,
+with allowances for the title (top) and the resize handle (bottom)
+*/
+#paletteContainer {
+    /*position: absolute;*/
+    /*bottom: 14px;*/
+    /*left: 0px;*/
+    /*right: 0px;*/
+    /*top: 14px;*/
+}
+

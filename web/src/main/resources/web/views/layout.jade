@@ -1,0 +1,103 @@
+extends components/main
+
+append styles
+    // Custom styles for this template
+    link(rel='stylesheet', type='text/css', href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700')
+    link(rel='stylesheet', type='text/css', href=basePath + '/stylesheets/navbar-fixed-top.css')
+    link(rel='stylesheet', type='text/css', href=basePath + '/stylesheets/justified-nav.css')
+    link(rel='stylesheet', type='text/css', href=basePath + '/stylesheets/tiny.css')
+    style.
+        .ui-autocomplete-loading {
+            background: white url('!{basePath}/stylesheets/images/ui-anim_basic_16x16.gif') right center no-repeat;
+        }
+
+        @font-face {
+            font-family: "Open Sans Docs";
+            font-display: swap;
+            src: url("fonts/OpenSans-Light.ttf") format("opentype");
+            font-weight: 300;
+            font-style: normal;
+            font-stretch: normal
+        }
+
+        @font-face {
+            font-family: "Open Sans Docs";
+            font-display: swap;
+            src: url("fonts/OpenSans-Regular.ttf") format("opentype");
+            font-weight: 400;
+            font-style: normal;
+            font-stretch: normal
+        }
+
+        @font-face {
+            font-family: "Open Sans Docs";
+            font-display: swap;
+            src: url("fonts/OpenSans-Italic.ttf") format("opentype");
+            font-weight: 400;
+            font-style: italic;
+            font-stretch: normal
+        }
+
+        @font-face {
+            font-family: "Open Sans Docs";
+            font-display: swap;
+            src: url("fonts/OpenSans-SemiBold.ttf") format("opentype");
+            font-weight: 600;
+            font-style: normal;
+            font-stretch: normal
+        }
+
+        @font-face {
+            font-family: "Open Sans Docs";
+            font-display: swap;
+            src: url("fonts/OpenSans-Bold.ttf") format("opentype");
+            font-weight: 700;
+            font-style: normal;
+            font-stretch: normal
+        }
+
+append scripts
+    script(src=basePath + '/javascripts/commons.js')
+    script(src=basePath + '/javascripts/w3color.js')
+    script.
+        let basePath = '!{basePath}'
+mixin navbar-open-archi(name, text, id, style, href, image, textColor)
+    - if (!style) var style = "default";
+    - if (!href) var href = "#";
+    nav( role="navigation", class=["navbar", "navbar-fixed-top", "navbar-" + style], id=name, style="margin-bottom: 0; border-bottom-width: 0;")
+        .container
+            .navbar-header
+                button.navbar-toggle.collapsed( type="button", data-toggle="collapse", data-target="#" + id, aria-expanded="false", aria-controls="navbar", style="margin-bottom: 10px; margin-top: 10px;")
+                    span.sr-only Toggle navigation
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+                div(style="display: flex;")
+                    a(href=basePath + href)
+                        img(alt=name, src=image)&attributes(attributes)
+                    if text
+                        span
+                            if textColor
+                                h2(style="color: " + textColor)= text
+                            else
+                                h2= text
+            .collapse.navbar-collapse( id=id )
+                ul.nav.navbar-nav
+                    block extra-menu-elements
+                ul.nav.navbar-nav.navbar-right
+                    block
+
+block body
+    // Fixed navbar
+    +navbar-open-archi("menu", null, "navbar", null, "/", basePath + "/images/open-archi-25.png", "#1E97C2")(height="50px", margin="4px")
+        if authorized
+            +nav_item("#")= login
+            +nav_item("#")(style='padding-top: 8px; padding-bottom: 0')
+                +img-thumbnail(avatar, 'Profile avatar', 'padding: 0; margin: 0')(width="35px", height="35px")
+            li
+                a.btn.btn-danger(href=basePath + '/logout', style='padding: 5px; color: white; margin-top: 8px; font-weight: bold;') Logout
+    block content
+
+block footer
+    footer.footer
+        p © araguacaima | open-archi 2018

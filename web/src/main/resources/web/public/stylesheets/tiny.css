@@ -1,0 +1,10 @@
+.bullet ul li {
+    list-style-type: none;
+}
+
+.bullet ul li:before {
+    font-family: 'Glyphicons Halflings';
+    content: "\e067";
+    position: absolute;
+    left: 25px;
+}

@@ -1,0 +1,168 @@
+.debug-inspector-container {
+    color: #FDFDFD;
+    background-color: #272625;
+    width: 100%;
+    padding: 2px;
+    height: 620px;
+    font-family: helvetica;
+}
+
+.debug-make-inline {
+    display: inline;
+}
+
+.debug-inspector {
+    margin: 2px;
+
+    font: 12px helvetica, sans-serif;
+
+    max-height: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -ms-user-select: none;
+    cursor: default;
+}
+
+
+.debug-inspector-container select {
+    border: 0px;
+    width: 100%;
+    color: black;
+    font-size: 13.3333px;
+}
+
+.debug-inspector input {
+    background-color: #202020;
+    color: #F5F5F5;
+    border: 0px;
+}
+
+.debug-inspector input:focus {
+    color: #FDFDFD;
+}
+
+.debug-inspector input:disabled {
+    color: #7B7B7B;; /* gray-blue */
+}
+
+.debug-inspector select {
+    background-color: #202020;
+    color: #F5F5F5;
+    border: 0px;
+}
+
+.debug-inspector select:focus {
+    color: #FDFDFD;
+}
+
+.debug-row {
+    margin-bottom: 2px;
+}
+
+.debug-cell {
+    display: inline-block;
+    width: 50%;
+    text-align: right;
+}
+
+.debug-right-align {
+    text-align: right;
+}
+
+.debug-input-short {
+    width: 40px;
+    text-indent: 1px;
+    text-align: center;
+}
+
+.debug-input-long {
+    width: 50%;
+    text-indent: 4px;
+    text-align: right;
+}
+
+.debug-inspector-nullable input[type=text] {
+    width: 165px;
+}
+
+.debug-inspector-n-field-label {
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.debug-inspector-button-container {
+    margin: 6px;
+    text-align: center;
+}
+
+.debug-inspector-button-container input {
+    margin: 2px;
+    font-size: 100%;
+    color: black;
+}
+
+.debug-inspector-group {
+    padding: 1px 3px 1px 3px;
+    /*border: 1px solid red; /* DEBUG */
+    border-top: 2px solid #272625; /* dark gray */
+}
+
+.debug-inspector-group select {
+    width: 50%;
+}
+
+.debug-inspector-group label {
+    font-weight: normal;
+    margin-bottom: 0px;
+}
+
+.debug-inspector-group input[type="checkbox"] {
+    margin: 3px 3px 3px 4px;
+}
+
+.debug-inspector-group .debug-row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.debug-inspector-section {
+    background-color: #333;
+}
+
+.debug-inspector-section h3 {
+    font-weight: bold;
+    line-height: normal;
+}
+
+.debug-inspector-container h3, .debug-inspector-container h2 {
+    background-color: #272625;
+    padding: 1px;
+    margin: 0;
+}
+
+.debug-inspector-container h3 {
+    font-size: 14px;
+    margin-top: 2px;
+}
+
+.debug-inspector-container h2 {
+    font-size: 18px;
+}
+
+label.debug-property-name {
+    width: 95px;
+    margin-right: 5px;
+    font-weight: bold;
+    display: inline-block;
+    text-align: right;
+
+}
+
+.debug-spectrum-control {
+    border: 0px;
+    background: none;
+}

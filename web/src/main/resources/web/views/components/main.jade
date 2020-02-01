@@ -1,0 +1,63 @@
+//- bootstrap.jade
+//- bootstrap mixins
+
+//- Including Icon mixins
+include icons
+//- Including Alert mixins
+include alerts
+//- Including Tooltip mixins
+include tooltips
+//- Including Accordion mixins
+include accordion
+//- Including Carousel mixins
+include carousel
+//- Including Table mixins
+include tables
+//- Including Navbar mixins
+include navbar
+//- Including Toggle Button mixins
+include toggle
+//- Including Nav mixins
+include navs
+//- Including Label mixins
+include labels
+//- Including Panel mixins
+include panels
+//- Including Tab mixins
+include tabs
+//- Including Dropdown mixins
+include dropdowns
+//- Including Form control mixins
+include forms
+//- Including Modal dialog mixins
+include modal
+//- Including List group mixins
+include list-groups
+//- Including Progress bar mixins
+include progress-bars
+//- Including Button mixins
+include buttons
+//- Including Image mixins
+include images
+//- Including Bootswatch theme mixins
+include bootswatch
+
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+        meta(name="description", content="OpenArchi site")
+        meta(name="author", content="Alejandro Manuel Méndez Araguacaima [araguacaima@gmail.com]")
+        block meta
+        title= title
+        block styles
+            link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+            link(rel="icon", href=basePath + "/favicon.ico")
+    body(data-spy="scroll", data-target=".scrollspy")
+        block body
+
+        block scripts
+            script(src=basePath + "/javascripts/jquery-3.3.1.min.js")
+            script(src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")

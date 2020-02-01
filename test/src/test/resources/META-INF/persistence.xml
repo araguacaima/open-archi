@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+
+    <persistence-unit name="open-archi" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <jar-file>${WORKSPACE_DIRECTORY}/dependency/persistence-architectural-1.0.1.jar</jar-file>
+        <jar-file>${WORKSPACE_DIRECTORY}/dependency/persistence-bpm-1.0.1.jar</jar-file>
+        <jar-file>${WORKSPACE_DIRECTORY}/dependency/persistence-commons-1.0.1.jar</jar-file>
+        <jar-file>${WORKSPACE_DIRECTORY}/dependency/persistence-component-1.0.1.jar</jar-file>
+        <jar-file>${WORKSPACE_DIRECTORY}/dependency/persistence-core-1.0.1.jar</jar-file>
+        <jar-file>${WORKSPACE_DIRECTORY}/dependency/persistence-er-1.0.1.jar</jar-file>
+        <jar-file>${WORKSPACE_DIRECTORY}/dependency/persistence-flowchart-1.0.1.jar</jar-file>
+        <jar-file>${WORKSPACE_DIRECTORY}/dependency/persistence-gantt-1.0.1.jar</jar-file>
+        <jar-file>${WORKSPACE_DIRECTORY}/dependency/persistence-sequence-1.0.1.jar</jar-file>
+        <jar-file>${WORKSPACE_DIRECTORY}/dependency/persistence-uml-classes-1.0.1.jar</jar-file>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    </persistence-unit>
+
+</persistence>

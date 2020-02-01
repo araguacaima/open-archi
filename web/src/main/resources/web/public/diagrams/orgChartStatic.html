@@ -1,0 +1,50 @@
+<html>
+<head>
+
+    <style type="text/css">
+        #myOverviewDiv {
+            position: absolute;
+            width: 200px;
+            height: 100px;
+            top: 10px;
+            left: 10px;
+            background-color: aliceblue;
+            z-index: 300; /* make sure its in front */
+            border: solid 1px blue;
+        }
+    </style>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+    <script src="${BASE_PATH}/javascripts/diagrams/examples/orgChartStatic.js"></script>
+    <script id="code">
+        $(document).ready(function () {
+            initOrgChartStatic("$$${divId}$$$");
+        });
+    </script>
+</head>
+<body>
+<div>
+    <h2 style="margin-top: 0; padding-top: 0; margin-bottom: 30px;">
+        Zooming
+    </h2>
+    <p>
+        Una forma alternativa de hacer zoom sobre una porción de un diseño de gran tamaño. Con esto, no hace falta
+        reducir
+        los componentes ni sobreponerlos para que quepan en determinada región finita de espacio.
+    </p>
+</div>
+<div id="sample" style="position: relative;">
+
+    <div id="myOverviewDiv"></div>
+
+    <p>
+        Dado que el modelo es grande puede hacerse uso de un cuadro de búsqueda para encontrar y resaltar los nodos
+        cuyos datos incluyen cadenas particulares. Tenga en cuenta que se pueden ver todos los nodos resaltados en la
+        Descripción general.
+    </p>
+
+    <input type="search" id="mySearch" onkeypress="if (event.keyCode === 13) searchDiagram()" title="Search"/>
+    <button onclick="searchDiagram()">Search</button>
+</div>
+<div id="diagramDiv-$$${divId}$$$"></div>
+</body>
+</html>

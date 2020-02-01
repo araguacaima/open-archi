@@ -1,0 +1,183 @@
+extends layout
+
+block meta
+    meta(name="description", content="OpenArchi Editor")
+
+append styles
+    link(rel='stylesheet', type='text/css', href=basePath + '/stylesheets/jquery-ui.css')
+    link(rel='stylesheet', type='text/css', href=basePath + '/stylesheets/autocomplete.css')
+    link(rel='stylesheet', type='text/css', href=basePath + '/stylesheets/menu.css')
+    link(rel='stylesheet', type='text/css', href=basePath + '/stylesheets/dataInspector.css')
+    link(rel='stylesheet', type='text/css', href=basePath + '/stylesheets/palette.css')
+    link(rel='stylesheet', type='text/css', href=basePath + '/stylesheets/bootstrap-slider.css')
+    link(rel='stylesheet', type='text/css', href=basePath + '/stylesheets/jquery.mCustomScrollbar.min.css')
+    link(rel='stylesheet', type='text/css', href=basePath + '/stylesheets/presenter.css')
+
+append scripts
+    script(type='text/javascript', src=basePath + '/javascripts/jquery-ui.js')
+    script.
+        $.fn.slider = null;
+    script(src=basePath + '/javascripts/go.js')
+    script(type='text/javascript', src=basePath + '/javascripts/underscore.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/common/openArchiCommon.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/common/openArchiToDiagram.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/common/openArchiFromDiagram.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/common/dataInspector.js')
+    script(type='text/javascript', src=basePath + '/javascripts/bootstrap-slider.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/common/editor.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/common/elements.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/elements/architectureModel.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/elements/component.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/elements/container.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/elements/layer.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/elements/system.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/common/basic.js')
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/common/palette.js')
+    script.
+        meta.isPrototyper = !{prototyper};
+
+        let nodeDataArray = [];
+        let linkDataArray = [];
+        let model = !{model_};
+        let paletteModel = {
+            basic: [],
+            general: []
+        };
+        let palette = !{palette_};
+        let MINLENGTH = '!{MINLENGTH}';  // this controls the minimum length of any swimlane
+        let MINBREADTH = '!{MINBREADTH}';  // this controls the minimum breadth of any non-collapsed swimlane
+        let HORIZONTAL = '!{HORIZONTAL}';  // this constant parameter can only be set here, not dynamically
+        let red = '!{red}';
+        let green = '!{green}';
+        let LinePrefix = '!{LinePrefix}';  // vertical starting point in document for all Messages and Activations
+        let LineSuffix = '!{LineSuffix}';  // vertical length beyond the last message time
+        let MessageSpacing = '!{MessageSpacing}';  // vertical distance between Messages at different steps
+        let ActivityWidth = '!{ActivityWidth}';  // width of each vertical activity bar
+        let ActivityStart = '!{ActivityStart}';  // height before start message time
+        let ActivityEnd = '!{ActivityEnd}';  // height beyond end message time
+        let source = '!{source}';
+        let lightText = 'whitesmoke';
+        let viewMode;
+        let diagramTypes = !{diagramTypes_};
+        let diagramTypesOptions = "";
+        let elementTypes = !{elementTypes_};
+        let elementTypesOptions = "";
+        let fullView = '!{fullView}';
+        let isDesktop = false;
+        let loadDesktopPrototyper = !{loadDesktopPrototyper};
+        let loadDesktopApi = !{loadDesktopApi};
+        let prototypeId = '!{prototypeId}';
+    script(type='text/javascript', src=basePath + '/javascripts/diagrams/presenter.js')
+block extra-menu-elements
+    +nav_item_dropdown("#", null, "diagramTypesDropdown")(label="Diagram Type")
+    +nav_item_dropdown("#")(label="Menu")
+        if meta.isPrototyper
+            +nav_item("/prototyper") New
+        unless
+            +nav_item("/editor") New
+        +nav_item("#")(onclick="validateModel()", id="ValidateModel") Validate
+        +nav_item("#")(onclick="confirmAndSave()", id="SaveButton") Save
+        +nav_item("#")(onclick="load()", id="LoadButton") Load
+        +nav_item("#")(onclick="openSVG()", id="OpenSVGButton") Export as SVG
+    if examples
+        +nav_item_dropdown("#", null, "sectionsExamples")(label="Examples")
+            each example in examples
+                +nav_item("#")(onclick="openExample('" + example.url + "', 'myExamples');", resource=example.url)= example.name
+    +nav_item("#")
+        input#diagramId(name='diagramId', placeholder='Template name...')
+
+block content
+    +modal-force("Prototype info", "diagram-info")(save="save")
+        form#diagram-info-form
+            .form-group
+                label.col-form-label(for="element-name") Name:
+                input.form-control#diagram-name(type="text")
+
+    +modal-force("Basic element data", "basic-element-data")(save="checkAndSave", more="openMore")
+        form#basic-element-form
+            .form-group
+                label.col-form-label(for="element-name") Name:
+                input.form-control#element-name(type="text")
+            .form-group
+                label.col-form-label Type:
+                .dropdown
+                    button.btn.btn-default.dropdown-toggle#element-type(type="button", data-toggle="dropdown")
+                        | Element Types
+                        | &nbsp;
+                    ul.dropdown-menu#elementTypesDropdown(role="menu", aria-labelledby="elementTypesDropdown")
+            .form-group
+                label.col-form-label Image (Only svg is permitted):
+                .dropdown
+                    input#element-image-2(type="file", name="image", accept="image/svg+xml")
+
+    +modal("Element role", "element-role-data")
+        form#element-role-form
+            .form-group
+                label.col-form-label Role:
+                .dropdown
+                    button.btn.btn-default.dropdown-toggle#element-role(type="button", data-toggle="dropdown")
+                        | Element Roles
+                        | &nbsp;
+                    ul.dropdown-menu#elementRolesDropdown(role="menu", aria-labelledby="elementRolesDropdown")
+
+    +modal("Element types", "element-types-data")
+        form#element-types-form
+            .form-group
+                label.col-form-label Element type:
+                .dropdown
+                    button.btn.btn-default.dropdown-toggle#element-type_(type="button", data-toggle="dropdown")
+                        | Element Roles
+                        | &nbsp;
+                    ul.dropdown-menu#elementTypesDropdown_(role="menu", aria-labelledby="elementTypesDropdown")
+
+    +modal("Model Validation", "model-validation")
+        h4 The entire JSON Model will be passed the to the Rules as a Service that use a Drools' Desition Table based model's validation implementation
+        p [Later it could be a Cucumber based Test set]
+        +list-group-custom
+            +list-group-item("#")
+                Validation issue #1
+            +list-group-item("#")
+                Validation issue #2
+
+    +modal("Element image", "element-image-data")
+        form#element-image-form
+            .form-group
+                label.col-form-label Image (Only svg is permitted):
+                .dropdown
+                    input#element-image(type="file", name="image", accept="image/svg+xml")
+
+    // Sidebar Holder
+    .wrapper
+        nav#sidebar.active
+            ul.list-unstyled.components
+                li.active
+                    #paletteDivBasic
+                li.active
+                    #paletteDivGeneral
+        #content
+            // Page Content Holder
+            #diagramDiv
+                #diagramsCanvas.container(style="justify-content: space-between; z-order: -1001")
+            #myExamples
+            #infoDraggable.draggable(style="display: none; vertical-align: top; top: 20px; left: 380px; position: relative")
+                #infoDraggableHandle.handle
+                    | Info
+                div
+                    #myInfo
+            #controlsDraggable.draggable(style="display: none; vertical-align: top; top: 20px; left: 380px; position: relative; width: 380px; padding-bottom: 10px;")
+                #controlsDraggableHandle.handle
+                    | Controls
+                div
+                    #myControls(style= "margin-top: 10px;")
+                        .col-sm-4
+                            b View Mode:
+                        .col-sm-4.text-right
+                            input#viewMode(type="text")
+            br
+            #dataModelDraggable.container-fluid.draggable(style="height: 100px; width: 400px; display: none")
+                #dataModelDraggableHandle.handle
+                    | Model
+                #dataModelContainer
+                    span#modelToSaveOrLoad(style="display: block")
+        a#sidebarCollapse.btn(href="#")
+            i.glyphicon.glyphicon-menu-right

@@ -1,0 +1,25 @@
+<html>
+<head>
+    <script src="${BASE_PATH}/javascripts/diagrams/examples/logicCircuit.js"></script>
+    <script id="code">
+        $(document).ready(function () {
+            initLogicCircuit("$$${divId}$$$");
+        });
+    </script>
+<body>
+<h2 style="margin-top: 0; padding-top: 0; margin-bottom: 30px;">
+    Alternativa a diagrama de flujos y secuencia
+</h2>
+<p>Para representar un diagrama de secuencia que muestre la interacción entre consumidores y backend a través de
+    todas las piezas middleware de un caso de uso se puede usar, claramente, un diagrama UML de secuencia. Eso lo
+    más convencional. SIn embargo, con OpenArchi podríamos incorporar esos flujos y secuencias directamente en el
+    diagrama de componentes de arquitectura. De este modo en la misma visual podría cualquier persona identificar
+    por cuáles componentes pasará cada caso de uso, identificando cuellos de botella, exceso de invocaciones,
+    consumo de APIs, etc, en tiempo de diseño
+</p>
+<div style="width: 100%; display: flex; justify-content: space-between">
+    <div id="paletteDiv-$$${divId}$$$" style="width: 100px; height: 500px; margin-right: 2px; background-color: whitesmoke; border: solid 1px black"></div>
+    <div id="diagramDiv-$$${divId}$$$" style="flex-grow: 1; height: 500px; border: solid 1px black"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    .container
+         .jumbotron.text-center
+             h1
+                 span.fa.fa-lock
+                 | Open Archi | Authentication
+             p Login with:&nbsp;
+                 a.btn.btn-danger(href=basePath + 'login/google')
+                     span.fab.fa-google
+                     | &nbsp;Google+
