@@ -175,6 +175,14 @@ function load(model, diagram) {
     }
 }
 
+function addImageToNode(elementType, data, desktopDiagram) {
+    const diagram = desktopDiagram.diagram;
+    diagram.startTransaction("Deleting new element");
+    diagram.model.setDataProperty(data, "image", desktopDiagram.meta.image);
+    diagram.requestUpdate();
+    diagram.commitTransaction("Deleting new element");
+}
+
 function placeNewNode(elementType, data, name, desktopDiagram, deleteData) {
     if (_.isObject(elementType)) {
         placeNode(elementType, data, name, desktopDiagram, deleteData);
@@ -697,6 +705,47 @@ function getElementType() {
         }
     }
     return null;
+}
+
+
+function handleNewImage(evt, desktopDiagram, node) {
+    const diagram = desktopDiagram.diagram;
+    const key = desktopDiagram.key;
+    let data = diagram.model.findNodeDataForKey(key);
+    const divId = diagram.div.id;
+    const splittedIds = divId.split("-");
+    let suffix = splittedIds.length > 1 ? "-" + splittedIds[1] : divId;
+    const elementType = node.shape;
+    const content = "<div>\n" +
+        "            <form data-role='validator' action='javascript:' novalidate='novalidate' data-role-validator='true' name='basic-element-form'>\n" +
+        "                <input id='image" + suffix + "' class=mt-2 type='file' data-role='file' data-prepend='Image' data-button-title='<span class=mif-folder></span>' accept='image/svg+xml'/>\n" +
+        "            </form>\n" +
+        "         </div>";
+    const dialog = Metro.dialog.create({
+        title: "Add Image",
+        modal: true,
+        show: true,
+        content: content,
+        actions: [
+            {
+                caption: "Continue",
+                cls: "primary js-dialog-close",
+                onclick: function (e) {
+                    addImageToNode(elementType.type, data, desktopDiagram);
+                }
+            },
+            {
+                caption: "Dismiss",
+                cls: "js-dialog-close",
+                onclick: function (e) {
+                    diagram.model.removeNodeData(data);
+                }
+            }
+        ]
+    });
+    $("#image" + suffix).on("change", function (e) {
+        handleImageSelect(e, desktopDiagram);
+    });
 }
 
 function handleImageSelect(evt, desktopDiagram) {

@@ -455,7 +455,58 @@ public class DBUpdate {
                 }
                 components.addAll(componentList);
             }
+            Set<LayerGroup> groups = layer.getGroups();
+            if (CollectionUtils.isNotEmpty(groups)) {
+                Collection<LayerGroup> groupsList = new ArrayList<>();
+                Set<LayerGroup> groups_ = new LinkedHashSet<>(groups);
+                groups.clear();
+                //OrpheusDbJPAEntityManagerUtils.merge(layer);
+                for (LayerGroup group_ : groups_) {
+                    groupsList.add(LayerGroups.process(group_));
+                }
+                groups.addAll(groupsList);
+            }
             return (Layer) Elements.process(layer);
+        }
+    }
+
+    public static class LayerGroups {
+
+        public static LayerGroup process(LayerGroup layer) throws SystemException, NotSupportedException, HeuristicRollbackException, HeuristicMixedException, RollbackException {
+            Set<System> systems = layer.getSystems();
+            if (CollectionUtils.isNotEmpty(systems)) {
+                Collection<System> systemList = new ArrayList<>();
+                Set<System> systems_ = new LinkedHashSet<>(systems);
+                systems.clear();
+                //OrpheusDbJPAEntityManagerUtils.merge(layer);
+                for (System system_ : systems_) {
+                    systemList.add(DBPersist.Systems.process(system_));
+                }
+                systems.addAll(systemList);
+            }
+            Set<Container> containers = layer.getContainers();
+            if (CollectionUtils.isNotEmpty(containers)) {
+                Collection<Container> containerList = new ArrayList<>();
+                Set<Container> containers_ = new LinkedHashSet<>(containers);
+                containers.clear();
+                //OrpheusDbJPAEntityManagerUtils.merge(layer);
+                for (Container container_ : containers_) {
+                    containerList.add(DBPersist.Containers.process(container_));
+                }
+                containers.addAll(containerList);
+            }
+            Set<Component> components = layer.getComponents();
+            if (CollectionUtils.isNotEmpty(components)) {
+                Collection<Component> componentList = new ArrayList<>();
+                Set<Component> components_ = new LinkedHashSet<>(components);
+                components.clear();
+                //OrpheusDbJPAEntityManagerUtils.merge(layer);
+                for (Component component_ : components_) {
+                    componentList.add(DBPersist.Components.process(component_));
+                }
+                components.addAll(componentList);
+            }
+            return (LayerGroup) DBUpdate.Elements.process(layer);
         }
     }
 

@@ -128,10 +128,9 @@ const partContextMenu =
         makeButton("Add image",
             function (e, obj) {
                 const diagram = e.diagram;
-                const model = diagram.model;
                 const node = obj.part.data;
                 const desktopDiagram = getDiagramById(diagram.desktopId);
-                handleImageSelect(e, desktopDiagram);
+                handleNewImage(e, desktopDiagram, node);
             }, function (o) {
                 return true;
             }),
@@ -425,6 +424,16 @@ function makePort(name, spot, input, output) {
         new go.Binding("toLinkable", "", OpenArchiWrapper.toToLinkable).makeTwoWay(OpenArchiWrapper.fromToLinkable));
 }
 
+function showNewColumnsAdornment(node, show) {
+    if (show) {
+        addColumnsHoverAdornment.adornedObject = node;
+        node.addAdornment("mouseHover", addColumnsHoverAdornment);
+    } else {
+        addColumnsHoverAdornment.adornedObject = null;
+        node.removeAdornment("mouseHover");
+    }
+}
+
 function showAdornment(node, show) {
     if (show) {
         nodeHoverAdornment.adornedObject = node;
@@ -439,7 +448,9 @@ function hideAllContextualMenu(e, obj) {
     const diagram = e.diagram;
     const nodes = diagram.nodes;
     for (let it = nodes; it.next();) {
-        showAdornment(it.value, false);
+        let node = it.value;
+        showAdornment(node, false);
+        hideNewColumnsMenu(node, false);
     }
     e.handled = true;
 }
@@ -477,6 +488,38 @@ function showContextualMenu(e, obj, prevObj) {
     e.handled = true;
 }
 
+function showNewColumnsMenu(e, obj, prevObj) {
+    const node = obj.part;
+    const pointedObject = getPointedObject(e);
+    const diagram = e.diagram;
+    const nodes = diagram.nodes;
+    if (pointedObject !== node) {
+        for (let it = nodes; it.next();) {
+            const n = it.value;  // n is now a Node or a Group
+            if (n !== node) {
+                showNewColumnsAdornment(n, false);
+            }
+        }
+        if (pointedObject !== undefined && pointedObject !== null) {
+            showNewColumnsAdornment(pointedObject, true);
+        } else {
+            showNewColumnsAdornment(node, false);
+        }
+    } else {
+        showNewColumnsAdornment(node, true);
+    }
+    e.handled = true;
+}
+
+
+function hideNewColumnsMenu(e, obj) {
+    const diagram = e.diagram;
+    const nodes = diagram.nodes;
+    for (let it = nodes; it.next();) {
+        showNewColumnsAdornment(it.value, false);
+    }
+    e.handled = true;
+}
 
 // Make all ports on a node visible when the mouse is over the node
 function showPorts(node, show) {
