@@ -1,6 +1,5 @@
 package com.araguacaima.open_archi.persistence.diagrams.core;
 
-import com.araguacaima.commons.utils.MapUtils;
 import com.araguacaima.commons.utils.ReflectionUtils;
 import com.araguacaima.open_archi.persistence.commons.Constants;
 import com.araguacaima.open_archi.persistence.commons.OperationType;
@@ -136,8 +135,8 @@ public abstract class BaseEntity implements Serializable, BasicEntity, Cloneable
 
     @Override
     @JsonIgnore
-    public <T extends BaseEntity> T validateAsociation() throws EntityError {
-        return validateAsociation(null);
+    public <T extends BaseEntity> T validateAssociation() throws EntityError {
+        return validateAssociation(null);
     }
 
     @Override
@@ -176,7 +175,7 @@ public abstract class BaseEntity implements Serializable, BasicEntity, Cloneable
 
     @Override
     @JsonIgnore
-    public <T extends BaseEntity> T validateAsociation(Map<Object, Object> map) throws EntityError {
+    public <T extends BaseEntity> T validateAssociation(Map<Object, Object> map) throws EntityError {
         if (map == null) map = new HashMap<>();
         map.put(Constants.OPERATION_TYPE, OperationType.REPLACEMENT);
         map.put(Constants.INITIATOR, this);

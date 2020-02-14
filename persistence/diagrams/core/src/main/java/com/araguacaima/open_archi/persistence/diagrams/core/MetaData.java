@@ -1,5 +1,6 @@
 package com.araguacaima.open_archi.persistence.diagrams.core;
 
+import com.araguacaima.open_archi.persistence.diagrams.core.reliability.Constraint;
 import com.araguacaima.open_archi.persistence.diagrams.meta.View;
 import com.araguacaima.open_archi.persistence.diagrams.persons.Responsible;
 import org.apache.commons.lang3.builder.CompareToBuilder;
@@ -17,6 +18,16 @@ import java.util.Set;
 @Table(name = "MetaData", schema = "Diagrams")
 @DynamicUpdate
 public class MetaData extends BaseEntity {
+
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToMany(cascade = CascadeType.REMOVE)
+    @JoinTable(schema = "Diagrams",
+            name = "Constraint_Granted_Responsibles",
+            joinColumns = {@JoinColumn(name = "Constraint_Id",
+                    referencedColumnName = "Id")},
+            inverseJoinColumns = {@JoinColumn(name = "Responsible_Id",
+                    referencedColumnName = "Id")})
+    private Set<Responsible> grantedResponsibles;
 
     @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany(cascade = CascadeType.REMOVE)
@@ -118,6 +129,15 @@ public class MetaData extends BaseEntity {
         this.views.addAll(views);
     }
 
+    public Set<Responsible> getGrantedResponsibles() {
+        return grantedResponsibles;
+    }
+
+    public void setGrantedResponsibles(Set<Responsible> views) {
+        this.grantedResponsibles.clear();
+        this.grantedResponsibles.addAll(views);
+    }
+
     @Override
     public void override(BaseEntity source) {
         override(source, false, null, null);
@@ -143,11 +163,13 @@ public class MetaData extends BaseEntity {
         Set<Taggable> relatedWith = source1.getRelatedWith();
         Set<Taggable> usedIn = source1.getUsedIn();
         Set<View> views = source1.getViews();
+        Set<Responsible> grantedResponsibles = source1.getGrantedResponsibles();
         Helper.fixCollection(responsibles, this.responsibles, keepMeta, suffix, clonedBy, comparator);
         Helper.fixCollection(collaborators, this.collaborators, keepMeta, suffix, clonedBy, comparator);
         Helper.fixCollection(relatedWith, this.relatedWith, keepMeta, suffix, clonedBy, comparator);
         Helper.fixCollection(usedIn, this.usedIn, keepMeta, suffix, clonedBy, comparator);
         Helper.fixCollection(views, this.views, keepMeta, suffix, clonedBy, comparator);
+        Helper.fixCollection(grantedResponsibles, this.grantedResponsibles, keepMeta, suffix, clonedBy, comparator);
     }
 
     @Override
@@ -169,11 +191,13 @@ public class MetaData extends BaseEntity {
         Set<Taggable> relatedWith = source1.getRelatedWith();
         Set<Taggable> usedIn = source1.getUsedIn();
         Set<View> views = source1.getViews();
+        Set<Responsible> grantedResponsibles = source1.getGrantedResponsibles();
         Helper.fixCollection(responsibles, this.responsibles, keepMeta, comparator);
         Helper.fixCollection(collaborators, this.collaborators, keepMeta, comparator);
         Helper.fixCollection(relatedWith, this.relatedWith, keepMeta, comparator);
         Helper.fixCollection(usedIn, this.usedIn, keepMeta, comparator);
         Helper.fixCollection(views, this.views, keepMeta, comparator);
+        Helper.fixCollection(grantedResponsibles, this.grantedResponsibles, keepMeta, comparator);
     }
 
 

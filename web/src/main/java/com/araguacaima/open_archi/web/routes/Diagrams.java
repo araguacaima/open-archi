@@ -20,7 +20,6 @@ import com.araguacaima.open_archi.web.common.Commons;
 import com.araguacaima.orpheusdb.utils.OrpheusDbJPAEntityManagerUtils;
 import org.pac4j.sparkjava.SparkWebContext;
 import spark.RouteGroup;
-import spark.route.HttpMethod;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.Collection;
@@ -29,7 +28,6 @@ import java.util.Map;
 import java.util.Set;
 
 import static com.araguacaima.open_archi.web.common.Commons.*;
-import static com.araguacaima.open_archi.web.common.Security.setCORS;
 import static java.net.HttpURLConnection.*;
 import static spark.Spark.*;
 
@@ -248,7 +246,7 @@ public class Diagrams implements RouteGroup {
                 } else {
                     map.put("OriginType", model.getKind());
                     map.put("DestinationType", layer.getKind());
-                    layer = layer.validateAsociation(map);
+                    layer = layer.validateAssociation(map);
                 }
 
                 final SparkWebContext ctx = new SparkWebContext(request, response);

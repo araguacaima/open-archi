@@ -70,6 +70,10 @@ public class MetaInfo implements Serializable, Comparable<MetaInfo>, Storable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
 
+    @OneToOne(cascade = CascadeType.REMOVE)
+    @Cascade({org.hibernate.annotations.CascadeType.REMOVE})
+    private ApprovalWorkflow approvalWorkflow;
+
     public MetaInfo() {
         this.id = UUID.randomUUID().toString();
         this.created = Calendar.getInstance().getTime();
@@ -106,6 +110,14 @@ public class MetaInfo implements Serializable, Comparable<MetaInfo>, Storable {
     public void setHistory(Set<History> history) {
         this.history.clear();
         this.history.addAll(history);
+    }
+
+    public ApprovalWorkflow getApprovalWorkflow() {
+        return approvalWorkflow;
+    }
+
+    public void setApprovalWorkflow(ApprovalWorkflow approvalWorkflow) {
+        this.approvalWorkflow = approvalWorkflow;
     }
 
     public void addHistory(History history) {

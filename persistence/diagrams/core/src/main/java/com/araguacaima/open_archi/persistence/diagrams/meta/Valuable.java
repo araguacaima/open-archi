@@ -22,7 +22,7 @@ public interface Valuable extends ClonableAndOverridable {
     <T extends BaseEntity> T validateReplacement(Map<Object, Object> map) throws EntityError;
 
     @JsonIgnore
-    <T extends BaseEntity> T validateAsociation(Map<Object, Object> map) throws EntityError;
+    <T extends BaseEntity> T validateAssociation(Map<Object, Object> map) throws EntityError;
 
     @JsonIgnore
     <T extends BaseEntity> T validateRequest() throws EntityError;
@@ -37,5 +37,5 @@ public interface Valuable extends ClonableAndOverridable {
     <T extends BaseEntity> T validateReplacement() throws EntityError;
 
     @JsonIgnore
-    <T extends BaseEntity> T validateAsociation() throws EntityError;
+    <T extends BaseEntity> T validateAssociation() throws EntityError;
 }
