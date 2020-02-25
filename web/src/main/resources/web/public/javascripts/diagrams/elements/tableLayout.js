@@ -14,28 +14,28 @@
 */
 
 /**
-* @constructor
-* @extends Layout
-* @class
-* This Layout positions non-Link Parts into a table according to the values of
-* GraphObject.row, GraphObject.column, GraphObject.rowSpan, GraphObject.columnSpan,
-* GraphObject.alignment, GraphObject.stretch.
-* If the value of GraphObject.stretch is not go.GraphObject.None, the Part will be sized
-* according to the available space in the cell(s).
-* <p>
-* You can specify constraints for whole rows or columns by calling
-* getRowDefinition(row) or getColumnDefinition(col) and setting one of the following properties:
-* RowColumnDefinition.alignment, RowColumnDefinition.height, RowColumnDefinition.width,
-* RowColumnDefinition.maximum, RowColumnDefinition.minimum, RowColumnDefinition.stretch.
-* <p>
-* The defaultAlignment and defaultStretch properties apply to all parts if not specified
-* on the individual Part or in the corresponding row or column definition.
-* <p>
-* At the current time, there is no support for separator lines
-* (RowColumnDefinition.separatorStroke, separatorStrokeWidth, and separatorDashArray properties)
-* nor background (RowColumnDefinition.background and coversSeparators properties).
-* There is no support for RowColumnDefinition.sizing, either.
-*/
+ * @constructor
+ * @extends Layout
+ * @class
+ * This Layout positions non-Link Parts into a table according to the values of
+ * GraphObject.row, GraphObject.column, GraphObject.rowSpan, GraphObject.columnSpan,
+ * GraphObject.alignment, GraphObject.stretch.
+ * If the value of GraphObject.stretch is not go.GraphObject.None, the Part will be sized
+ * according to the available space in the cell(s).
+ * <p>
+ * You can specify constraints for whole rows or columns by calling
+ * getRowDefinition(row) or getColumnDefinition(col) and setting one of the following properties:
+ * RowColumnDefinition.alignment, RowColumnDefinition.height, RowColumnDefinition.width,
+ * RowColumnDefinition.maximum, RowColumnDefinition.minimum, RowColumnDefinition.stretch.
+ * <p>
+ * The defaultAlignment and defaultStretch properties apply to all parts if not specified
+ * on the individual Part or in the corresponding row or column definition.
+ * <p>
+ * At the current time, there is no support for separator lines
+ * (RowColumnDefinition.separatorStroke, separatorStrokeWidth, and separatorDashArray properties)
+ * nor background (RowColumnDefinition.background and coversSeparators properties).
+ * There is no support for RowColumnDefinition.sizing, either.
+ */
 function TableLayout() {
   go.Layout.call(this);
   /** @type {Spot} */
@@ -65,26 +65,26 @@ TableLayout.prototype.cloneProtected = function(copy) {
 };
 
 /**
-* Gets or sets the alignment to use by default for Parts in rows (vertically) and in columns (horizontally).
-* The default value is {@link Spot#Default}.
-* Setting this property does not raise any events.
-* @name TableLayout#defaultAlignment
-* @function.
-* @return {Spot}
-*/
+ * Gets or sets the alignment to use by default for Parts in rows (vertically) and in columns (horizontally).
+ * The default value is {@link Spot#Default}.
+ * Setting this property does not raise any events.
+ * @name TableLayout#defaultAlignment
+ * @function.
+ * @return {Spot}
+ */
 Object.defineProperty(TableLayout.prototype, "defaultAlignment", {
   get: function() { return this._defaultAlignment; },
   set: function(val) { this._defaultAlignment = val; }
 });
 
 /**
-* Gets or sets whether Parts should be stretched in rows (vertically) and in columns (horizontally).
-* The default value is {@link GraphObject#Default}.
-* Setting this property does not raise any events.
-* @name TableLayout#defaultStretch
-* @function.
-* @return {EnumValue}
-*/
+ * Gets or sets whether Parts should be stretched in rows (vertically) and in columns (horizontally).
+ * The default value is {@link GraphObject#Default}.
+ * Setting this property does not raise any events.
+ * @name TableLayout#defaultStretch
+ * @function.
+ * @return {EnumValue}
+ */
 Object.defineProperty(TableLayout.prototype, "defaultStretch", {
   get: function() { return this._defaultStretch; },
   set: function(val) { this._defaultStretch = val; }
@@ -92,13 +92,13 @@ Object.defineProperty(TableLayout.prototype, "defaultStretch", {
 
 
 /**
-* Gets the {@link RowColumnDefinition} for a particular row in this TableLayout.
-* If you ask for the definition of a row at or beyond the {@link #rowCount},
-* it will automatically create one and return it.
-* @this {TableLayout}
-* @param {number} idx the non-negative zero-based integer row index.
-* @return {RowColumnDefinition}
-*/
+ * Gets the {@link RowColumnDefinition} for a particular row in this TableLayout.
+ * If you ask for the definition of a row at or beyond the {@link #rowCount},
+ * it will automatically create one and return it.
+ * @this {TableLayout}
+ * @param {number} idx the non-negative zero-based integer row index.
+ * @return {RowColumnDefinition}
+ */
 TableLayout.prototype.getRowDefinition = function(idx) {
   if (idx < 0) throw new Error("Row index must be non-negative, not: " + idx);
   idx = Math.round(idx);
@@ -116,27 +116,27 @@ TableLayout.prototype.getRowDefinition = function(idx) {
 };
 
 /**
-* This read-only property returns the number of rows in this TableLayout.
-* This value is only valid after the layout has been performed.
-* @name TableLayout#rowCount
-* @function.
-* @return {number}
-*/
+ * This read-only property returns the number of rows in this TableLayout.
+ * This value is only valid after the layout has been performed.
+ * @name TableLayout#rowCount
+ * @function.
+ * @return {number}
+ */
 Object.defineProperty(TableLayout.prototype, "rowCount", {
   get: function() { return this._rowDefs.length; }
 });
 
 /**
-* Returns the row at a given y-coordinate in document coordinates.
-* This information is only valid when this layout has been performed and {#Layout.isValidLayout}.
-* <p>
-* If the point is above row 0, this method returns -1.
-* If the point below the last row, this returns the last row + 1.
-* @this {TableLayout}
-* @param {number} y
-* @return {number} a zero-based integer
-* @see #findColumnForDocumentX
-*/
+ * Returns the row at a given y-coordinate in document coordinates.
+ * This information is only valid when this layout has been performed and {#Layout.isValidLayout}.
+ * <p>
+ * If the point is above row 0, this method returns -1.
+ * If the point below the last row, this returns the last row + 1.
+ * @this {TableLayout}
+ * @param {number} y
+ * @return {number} a zero-based integer
+ * @see #findColumnForDocumentX
+ */
 TableLayout.prototype.findRowForDocumentY = function(y) {
   y -= this.arrangementOrigin.y;
   if (y < 0) return -1;
@@ -156,13 +156,13 @@ TableLayout.prototype.findRowForDocumentY = function(y) {
 
 
 /**
-* Gets the {@link RowColumnDefinition} for a particular column in this TableLayout.
-* If you ask for the definition of a column at or beyond the {@link #columnCount},
-* it will automatically create one and return it.
-* @this {TableLayout}
-* @param {number} idx the non-negative zero-based integer column index.
-* @return {RowColumnDefinition}
-*/
+ * Gets the {@link RowColumnDefinition} for a particular column in this TableLayout.
+ * If you ask for the definition of a column at or beyond the {@link #columnCount},
+ * it will automatically create one and return it.
+ * @this {TableLayout}
+ * @param {number} idx the non-negative zero-based integer column index.
+ * @return {RowColumnDefinition}
+ */
 TableLayout.prototype.getColumnDefinition = function(idx) {
   if (idx < 0) throw new Error("Column index must be non-negative, not: " + idx);
   idx = Math.round(idx);
@@ -180,27 +180,27 @@ TableLayout.prototype.getColumnDefinition = function(idx) {
 };
 
 /**
-* This read-only property returns the number of columns in this TableLayout.
-* This value is only valid after the layout has been performed.
-* @name TableLayout#rowCount
-* @function.
-* @return {number}
-*/
+ * This read-only property returns the number of columns in this TableLayout.
+ * This value is only valid after the layout has been performed.
+ * @name TableLayout#rowCount
+ * @function.
+ * @return {number}
+ */
 Object.defineProperty(TableLayout.prototype, "columnCount", {
   get: function() { return this._colDefs.length; }
 });
 
 /**
-* Returns the cell at a given x-coordinate in document coordinates.
-* This information is only valid when this layout has been performed and {#Layout.isValidLayout}.
-* <p>
-* If the point is to left of the column 0, this method returns -1.
-* If the point to to the right of the last column, this returns the last column + 1.
-* @this {TableLayout}
-* @param {number} x
-* @return {number} a zero-based integer
-* @see #findRowForDocumentY
-*/
+ * Returns the cell at a given x-coordinate in document coordinates.
+ * This information is only valid when this layout has been performed and {#Layout.isValidLayout}.
+ * <p>
+ * If the point is to left of the column 0, this method returns -1.
+ * If the point to to the right of the last column, this returns the last column + 1.
+ * @this {TableLayout}
+ * @param {number} x
+ * @return {number} a zero-based integer
+ * @see #findRowForDocumentY
+ */
 TableLayout.prototype.findColumnForDocumentX = function(x) {
   x -= this.arrangementOrigin.x;
   if (x < 0) return -1;
@@ -220,13 +220,13 @@ TableLayout.prototype.findColumnForDocumentX = function(x) {
 
 
 /**
-* @ignore
-* @this {TableLayout}
-* @param {Part} child
-* @param {number} row
-* @param {number} col
-* @return {EnumValue}
-*/
+ * @ignore
+ * @this {TableLayout}
+ * @param {Part} child
+ * @param {number} row
+ * @param {number} col
+ * @return {EnumValue}
+ */
 TableLayout.prototype.getEffectiveTableStretch = function(child, row, col) {
   var effectivestretch = child.stretch;
   if (effectivestretch !== go.GraphObject.Default) return effectivestretch;
@@ -265,9 +265,9 @@ TableLayout.prototype.getEffectiveTableStretch = function(child, row, col) {
 };
 
 /**
-* @ignore
-* @this {TableLayout}
-*/
+ * @ignore
+ * @this {TableLayout}
+ */
 TableLayout.prototype.doLayout = function(coll) {
   this.arrangementOrigin = this.initialOrigin(this.arrangementOrigin);
   // put all eligible Parts that are not Links into an Array
@@ -288,25 +288,25 @@ TableLayout.prototype.doLayout = function(coll) {
 };
 
 /**
-* @ignore
-* @this {TableLayout}
-* @param {List} parts
-* @param {Array.<Array.<Array>>} rowcol  [row][col][cell]
-*/
+ * @ignore
+ * @this {TableLayout}
+ * @param {List} parts
+ * @param {Array.<Array.<Array>>} rowcol  [row][col][cell]
+ */
 TableLayout.prototype.beforeMeasure = function(parts, rowcol) { };
 
 /**
-* @ignore
-* @this {TableLayout}
-* @param {List} parts
-* @param {Array.<Array.<Array>>} rowcol  [row][col][cell]
-*/
+ * @ignore
+ * @this {TableLayout}
+ * @param {List} parts
+ * @param {Array.<Array.<Array>>} rowcol  [row][col][cell]
+ */
 TableLayout.prototype.afterArrange = function(parts, rowcol) { };
 
 /**
-* @ignore
-* @this {TableLayout}
-*/
+ * @ignore
+ * @this {TableLayout}
+ */
 TableLayout.prototype.measureTable = function(width, height, children, union, minw, minh) {
   var l = children.length;
   // Make the array that holds [rows][cols] of the table
@@ -536,8 +536,8 @@ TableLayout.prototype.measureTable = function(width, height, children, union, mi
     }
 
     allowedSize.setTo(
-      Math.max(colHerald.minimum, Math.min(w, colHerald.maximum)),
-      Math.max(rowHerald.minimum, Math.min(h, rowHerald.maximum)));
+        Math.max(colHerald.minimum, Math.min(w, colHerald.maximum)),
+        Math.max(rowHerald.minimum, Math.min(h, rowHerald.maximum)));
 
     // Which way do we care about fill:
     var stretch = this.getEffectiveTableStretch(child, rowHerald, colHerald);
@@ -603,8 +603,8 @@ TableLayout.prototype.measureTable = function(width, height, children, union, mi
 
     // If there's a set column width/height we don't care about the given width/height
     allowedSize.setTo(
-      Math.max(colHerald.minimum, Math.min(width, colHerald.maximum)),
-      Math.max(rowHerald.minimum, Math.min(height, rowHerald.maximum)));
+        Math.max(colHerald.minimum, Math.min(width, colHerald.maximum)),
+        Math.max(rowHerald.minimum, Math.min(height, rowHerald.maximum)));
 
     // If it is a spanner and has a fill:
     var stretch = this.getEffectiveTableStretch(child, rowHerald, colHerald);
@@ -700,9 +700,9 @@ TableLayout.prototype.measureTable = function(width, height, children, union, mi
 
 
 /**
-* @ignore
-* @this {TableLayout}
-*/
+ * @ignore
+ * @this {TableLayout}
+ */
 TableLayout.prototype.arrangeTable = function(children, union, rowcol) {
   var l = children.length;
   var originx = this.arrangementOrigin.x;

@@ -9,7 +9,7 @@ import java.util.*;
 
 @Entity
 @PersistenceUnit(unitName = "open-archi")
-@Table(name = "ApprovalWorkfow", schema = "Diagrams")
+@Table(name = "ApprovalWorkflow", schema = "Meta")
 @DynamicUpdate
 public class ApprovalWorkflow implements Storable {
 

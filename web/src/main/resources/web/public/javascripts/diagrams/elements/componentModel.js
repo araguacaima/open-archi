@@ -13,7 +13,7 @@ const componentModelTemplate = gojs(
         minLocation: new go.Point(NaN, -Infinity),  // only allow vertical movement
         maxLocation: new go.Point(NaN, Infinity),
         layerName: "Background",  // all pools and lanes are always behind all nodes and links
-        layout: gojs(PoolLayout, {spacing: new go.Size(3, 3)}),  // no space between lanes
+        layout: gojs(TableLayout/*, {spacing: new go.Size(3, 3)}*/),  // no space between lanes
         ungroupable: true,
         computesBoundsAfterDrag: true,  // needed to prevent recomputing Group.placeholder bounds too soon
         computesBoundsIncludingLinks: false,  // to reduce occurrences of links going briefly outside the lane

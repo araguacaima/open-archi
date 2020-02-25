@@ -82,6 +82,9 @@ const Desktop = {
         o.onWindowDestroy = function (win) {
             that.removeFromTaskBar(win);
         };
+        o.onFocus = function () {
+            alert("Tal");
+        };
         const div = o.suffix ? $("<div>", {id: "window-" + o.suffix}) : $("<div>");
         const w = div.appendTo($(this.options.windowArea));
         const wnd = w.window(o).data("window");
@@ -461,10 +464,12 @@ function createPrototyperWindow(diagramType, model) {
     let contentClass = "";
     if (diagramType !== undefined && !_.isEmpty(diagramType) && diagramType.type !== 'DEFAULT') {
         const colorScheme = OpenArchiWrapper.getPrimaryColorScheme(diagramType);
+        let captionClassPrimary;
+        let captionClassText;
         if (colorScheme !== undefined) {
             captionClass = "caption-class-" + generatedId;
-            const captionClassPrimary = colorScheme.fillColor;
-            const captionClassText = colorScheme.textColor;
+            captionClassPrimary = colorScheme.fillColor;
+            captionClassText = colorScheme.textColor;
             $("<style type='text/css'>\n  ." + captionClass + " { \n" +
                 "    background-color: " + captionClassPrimary + " !important; \n" +
                 "    color: " + captionClassText + " !important; \n" +
@@ -603,13 +608,12 @@ function createPrototyperWindow(diagramType, model) {
             "                </div>\n" +
             "            </div>\n" +
             "        </div>\n" +
-            "    </nav>\n"
-            +
+            "    </nav>\n" +
             //Content
-            "    <div class='grid' style='height: 100%; padding: 0'>\n" +
+            "    <div class='grid pt-1' style='height: 100%; padding: 0; '>\n" +
             "        <div class='row' style='max-height: calc(100% - 65px); height: 100%;'>\n" +
-            "            <div class='stub' style='width: 128px; height: 100%; padding: 0'>\n" +
-            "                <div class='active' id='sidebar" + "-" + generatedId + "' style='position: initial;'>\n" +
+            "            <div class='stub' style='width: 146px; height: 100%; padding: 0; background-color: " + captionClassPrimary + "; '>\n" +
+            "                <div class='active' id='sidebar" + "-" + generatedId + "' style='position: initial; background-color: transparent;'>\n" +
             "                  <div style='margin-left: 0; height: 100%'>\n" +
             "                      <div>\n" +
             "                        <div id='paletteDivBasic" + "-" + generatedId + "'></div>\n" +
