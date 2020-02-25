@@ -832,7 +832,6 @@ function computeMinLaneSize(lane) {
 }
 
 
-/*
 // define a custom ResizingTool to limit how far one can shrink a lane Group
 function LaneResizingTool() {
     go.ResizingTool.call(this);
@@ -850,7 +849,7 @@ LaneResizingTool.prototype.isHeightening = function () {
 };
 
 
-/!** @override *!/
+/** @override */
 LaneResizingTool.prototype.computeMinSize = function () {
     const lane = this.adornedObject.part;
     // assert(lane instanceof go.Group && lane.category !== "Pool");
@@ -865,7 +864,7 @@ LaneResizingTool.prototype.computeMinSize = function () {
     return msz;
 };
 
-/!** @override *!/
+/** @override */
 LaneResizingTool.prototype.resize = function (newr) {
     const lane = this.adornedObject.part;
     if (this.isLengthening()) {  // changing the length of all of the lanes
@@ -883,7 +882,6 @@ LaneResizingTool.prototype.resize = function (newr) {
     relayoutDiagram(this.diagram);  // now that the lane has changed size, layout the pool again
 };
 // end LaneResizingTool class
-*/
 
 
 // define a custom grid layout that makes sure the length of each lane is the same
@@ -1249,52 +1247,3 @@ function uniqueLink(fromnode, fromport, tonode, toport) {
     }
     return true;
 }
-
-// define a custom ResizingTool to limit how far one can shrink a row or column
-function LaneResizingTool() {
-    go.ResizingTool.call(this);
-}
-go.Diagram.inherit(LaneResizingTool, go.ResizingTool);
-
-LaneResizingTool.prototype.computeMinSize = function() {
-    let diagram = this.diagram;
-    let lane = this.adornedObject.part;  // might be row or column
-    let horiz = (lane.category === "Column Header");  // or "Row Header"
-    let margin = diagram.nodeTemplate.margin;
-    let bounds = new go.Rect();
-    diagram.findTopLevelGroups().each(function(g) {
-        if (horiz ? (g.column === lane.column) : (g.row === lane.row)) {
-            let b = diagram.computePartsBounds(g.memberParts);
-            if (b.isEmpty()) return;  // nothing in there?  ignore it
-            b.unionPoint(g.location);  // keep any empty space on the left and top
-            b.addMargin(margin);  // assume the same node margin applies to all nodes
-            if (bounds.isEmpty()) {
-                bounds = b;
-            } else {
-                bounds.unionRect(b);
-            }
-        }
-    });
-
-    // limit the result by the standard value of computeMinSize
-    var msz = go.ResizingTool.prototype.computeMinSize.call(this);
-    if (bounds.isEmpty()) return msz;
-    return new go.Size(Math.max(msz.width, bounds.width), Math.max(msz.height, bounds.height));
-};
-
-LaneResizingTool.prototype.resize = function(newr) {
-    let lane = this.adornedObject.part;
-    let horiz = (lane.category === "Column Header");
-    let lay = this.diagram.layout;  // the TableLayout
-    if (horiz) {
-        let col = lane.column;
-        let coldef = lay.getColumnDefinition(col);
-        coldef.width = newr.width;
-    } else {
-        let row = lane.row;
-        let rowdef = lay.getRowDefinition(row);
-        rowdef.height = newr.height;
-    }
-    lay.invalidateLayout();
-};
-// end LaneResizingTool class
