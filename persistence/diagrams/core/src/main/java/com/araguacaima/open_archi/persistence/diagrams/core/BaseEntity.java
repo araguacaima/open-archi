@@ -179,7 +179,7 @@ public abstract class BaseEntity implements Serializable, BasicEntity, Cloneable
         if (map == null) map = new HashMap<>();
         map.put(Constants.OPERATION_TYPE, OperationType.REPLACEMENT);
         map.put(Constants.INITIATOR, this);
-        return traverse(this, "validateAsociation", map);
+        return traverse(this, "validateAssociation", map);
     }
 
     @JsonIgnore
@@ -244,9 +244,9 @@ public abstract class BaseEntity implements Serializable, BasicEntity, Cloneable
                     Specification specification = specificationMap.getSpecificationFromMethod(method);
                     if (specification != null) {
                         boolean satisfiedBy = specification.isSatisfiedBy(object_, map);
-                        Map<Object, Object> stroredReplacements = (Map<Object, Object>) map.get(Constants.SPECIFICATION_STORED_REPLACEMENTS);
-                        if (stroredReplacements != null) {
-                            Object storedObject = stroredReplacements.get(object_);
+                        Map<Object, Object> storedReplacements = (Map<Object, Object>) map.get(Constants.SPECIFICATION_STORED_REPLACEMENTS);
+                        if (storedReplacements != null) {
+                            Object storedObject = storedReplacements.get(object_);
                             if (storedObject != null) {
                                 object_ = storedObject;
                             }

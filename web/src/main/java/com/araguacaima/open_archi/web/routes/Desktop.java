@@ -55,7 +55,7 @@ public class Desktop implements RouteGroup {
                             log.warn(t.getMessage());
                         }
                     } else {
-                        log.debug("Loading empty prototyper due name and kind query parameters are both empty");
+                        log.debug("Loading empty prototyper due name or kind query parameters are empty");
                     }
                     return buildModelAndView(req, res, bean, PATH + "/home");
                 },
