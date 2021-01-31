@@ -209,6 +209,13 @@
 
             <dependency>
                 <groupId>com.araguacaima.open_archi</groupId>
+                <artifactId>persistence-commons-capabilities</artifactId>
+                <version>${project.version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.araguacaima.open_archi</groupId>
                 <artifactId>persistence-bpm</artifactId>
                 <version>${project.version}</version>
                 <scope>compile</scope>
@@ -582,6 +589,8 @@
         <module>persistence/diagrams/sequence</module>
         <module>persistence/diagrams/component</module>
         <module>persistence/commons</module>
+        <module>persistence/capabilities/commons</module>
+        <module>persistence/capabilities/architectural</module>
         <module>web</module>
         <module>test</module>
     </modules>

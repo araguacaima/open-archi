@@ -20,6 +20,8 @@ tags:
   description: Specific functionalities related to each kind of to model type
 - name: Consumers
   description: Manage every kind of possible consumer of a model
+- name: Capabilities
+  description: Establish capabilities for every element to be used for models and diagrams evaluation
 - name: Catalogs
   description: Manage a set of useful catalogs of common info about models, diagrams and consumers
 - name: Palettes
@@ -172,6 +174,7 @@ paths:
         required: false
         type: string
       - name: "kind"
+        in: query
         type: string
         description: Type of element
         enum:
@@ -394,9 +397,9 @@ paths:
     put:
       tags:
       - Models
-      summary: Completelly replace an existent model
-      description: If the model object does not exists previously, it won't be created, instead, an error will be raised. The existent model will be deleted completelly before updating, so the default values will be taken for any non-existent value in the request of this mmethod.
-      operationId: completelly-update-model
+      summary: completely replace an existent model
+      description: If the model object does not exists previously, it won't be created, instead, an error will be raised. The existent model will be deleted completely before updating, so the default values will be taken for any non-existent value in the request of this mmethod.
+      operationId: completely-update-model
       consumes:
       - application/json
       produces:
@@ -473,7 +476,7 @@ paths:
       tags:
       - Models
       summary: Replace the current status of the model
-      description:
+      description: Replace the current status of the model
       operationId: replace-model-status
       consumes:
       - application/json
@@ -1124,8 +1127,8 @@ paths:
       tags:
       - Diagrams
       summary: Finds a specific layer within the provided model
-      description:
-      operationId: get-layer
+      description: Finds a specific layer within the provided model
+      operationId: get-architecture-layer
       produces:
       - application/json
       parameters:
@@ -1154,7 +1157,7 @@ paths:
       - Diagrams
       summary: Partially update an existent layer within the provided model
       description: If the layer does not exists previously, an error will be raised. Only incoming attributes will be affected. All preexisting values for non-requested fields will keep its current stored values.
-      operationId: partially-update-model-layer
+      operationId: partially-update-architecture-model-layer
       consumes:
       - application/json
       produces:
@@ -1188,9 +1191,9 @@ paths:
     put:
       tags:
       - Diagrams
-      summary: Completelly update an existent layer within the provided model
-      description: If the layer object does not exists previously, it won't be created, instead, an error will be raised. The existent container will be deleted completelly before updating, so the default values will be taken for any non-existent value in the request of this mmethod.
-      operationId: completelly-update-model-layer
+      summary: completely update an existent layer within the provided model
+      description: If the layer object does not exists previously, it won't be created, instead, an error will be raised. The existent container will be deleted completely before updating, so the default values will be taken for any non-existent value in the request of this mmethod.
+      operationId: completely-update-model-layer
       consumes:
       - application/json
       produces:
@@ -1370,7 +1373,7 @@ paths:
       tags:
       - Diagrams
       summary: Finds a consumer of a model
-      description:
+      description: Finds a consumer of a model
       operationId: get-model-consumer
       produces:
       - application/json
@@ -1400,7 +1403,7 @@ paths:
       - Diagrams
       summary: Partially update an existent model's consumer
       description: If the consumer object does not exists previously, or it doesn't belongs to the provided model, an error will be raised. Only incoming attributes will be affected. All preexisting values for non-requested fields will keep its current stored values.
-      operationId: partially-update-model-consumer
+      operationId: partially-update-architecture-model-consumer
       consumes:
       - application/json
       produces:
@@ -1438,9 +1441,9 @@ paths:
     put:
       tags:
       - Diagrams
-      summary: Completelly update an existent model's consumer
-      description: If the consumer object does not exists previously, or it doesn't belongs to the provided model, it won't be created, instead, an error will be raised. The existent consumer will be deleted completelly before updating, so the default values will be taken for any non-existent value in the request of this mmethod.
-      operationId: completelly-update-model-consumer
+      summary: completely update an existent model's consumer
+      description: If the consumer object does not exists previously, or it doesn't belongs to the provided model, it won't be created, instead, an error will be raised. The existent consumer will be deleted completely before updating, so the default values will be taken for any non-existent value in the request of this mmethod.
+      operationId: completely-update-model-consumer
       consumes:
       - application/json
       produces:
@@ -1481,7 +1484,7 @@ paths:
       - Diagrams
       summary: Finds systems
       description: This service supports query by using RSQL expressions
-      operationId: get-systems
+      operationId: get-all-systems
       produces:
       - application/json
       parameters:
@@ -1507,7 +1510,7 @@ paths:
       - Diagrams
       summary: Add a new system
       description: If the system does not exists previously, it will be created, otherwise an error will be rised.
-      operationId: add-system
+      operationId: add-architecture-system
       consumes:
       - application/json
       produces:
@@ -1535,8 +1538,8 @@ paths:
       tags:
       - Diagrams
       summary: Finds a specific system
-      description:
-      operationId: get-system
+      description: Finds a specific system
+      operationId: get-architecture-system-by-id
       produces:
       - application/json
       parameters:
@@ -1560,7 +1563,7 @@ paths:
       - Diagrams
       summary: Partially update an existent system
       description: If the system does not exists previously, an error will be raised. Only incoming attributes will be affected. All preexisting values for non-requested fields will keep its current stored values.
-      operationId: partially-update-model-system
+      operationId: partially-update-architecture-model-system
       consumes:
       - application/json
       produces:
@@ -1589,19 +1592,14 @@ paths:
     put:
       tags:
       - Diagrams
-      summary: Completelly update an existent system
-      description: If the system object does not exists previously, it won't be created, instead, an error will be raised. The existent container will be deleted completelly before updating, so the default values will be taken for any non-existent value in the request of this mmethod.
-      operationId: completelly-update-model-system
+      summary: completely update an existent system
+      description: If the system object does not exists previously, it won't be created, instead, an error will be raised. The existent container will be deleted completely before updating, so the default values will be taken for any non-existent value in the request of this mmethod.
+      operationId: completely-update-architecturemodel-system
       consumes:
       - application/json
       produces:
       - application/json
       parameters:
-      - name: model-id
-        in: path
-        description: ID of the model to which the container belongs
-        required: true
-        type: string
       - name: system-id
         in: path
         description: ID of the system to replace
@@ -1632,7 +1630,7 @@ paths:
       - Diagrams
       summary: Finds systems for the system
       description: This service supports query by using RSQL expressions
-      operationId: get-system-systems
+      operationId: get-architecture-system-systems
       produces:
       - application/json
       parameters:
@@ -1698,7 +1696,7 @@ paths:
       tags:
       - Diagrams
       summary: Finds a specific layer
-      description:
+      description: Finds a specific layer
       operationId: get-layer
       produces:
       - application/json
@@ -1752,19 +1750,14 @@ paths:
     put:
       tags:
       - Diagrams
-      summary: Completelly update an existent layer
-      description: If the layer object does not exists previously, it won't be created, instead, an error will be raised. The existent container will be deleted completelly before updating, so the default values will be taken for any non-existent value in the request of this mmethod.
-      operationId: completelly-update-model-layer
+      summary: completely update an existent layer
+      description: If the layer object does not exists previously, it won't be created, instead, an error will be raised. The existent container will be deleted completely before updating, so the default values will be taken for any non-existent value in the request of this mmethod.
+      operationId: completely-update-architecture-model-layer
       consumes:
       - application/json
       produces:
       - application/json
       parameters:
-      - name: model-id
-        in: path
-        description: ID of the model to which the container belongs
-        required: true
-        type: string
       - name: layer-id
         in: path
         description: ID of the layer to replace
@@ -2086,7 +2079,7 @@ paths:
       - Diagrams
       summary: Finds containers for the system
       description: This service supports query by using RSQL expressions
-      operationId: get-system-containers
+      operationId: get-architecture-system-containers
       produces:
       - application/json
       parameters:
@@ -2119,7 +2112,7 @@ paths:
       - Diagrams
       summary: Add a new container to the specified system
       description: Only if the container object does not exists previously, it will be created, otherwise an error will be raised.
-      operationId: add-system-container
+      operationId: add-architecture-system-container
       consumes:
       - application/json
       produces:
@@ -2153,7 +2146,7 @@ paths:
       - Diagrams
       summary: Finds components for the system
       description: This service supports query by using RSQL expressions
-      operationId: get-system-components
+      operationId: get-architecture-system-components
       produces:
       - application/json
       parameters:
@@ -2274,7 +2267,7 @@ paths:
       tags:
       - Diagrams
       summary: Finds a specific container
-      description:
+      description: Finds a specific container
       operationId: get-container
       produces:
       - application/json
@@ -2332,9 +2325,9 @@ paths:
     put:
       tags:
       - Diagrams
-      summary: Completelly update an existent container
-      description: If the container object does not exists previously, it won't be created, instead, an error will be raised. The existent container will be deleted completelly before updating, so the default values will be taken for any non-existent value in the request of this method.
-      operationId: completelly-update-container
+      summary: completely update an existent container
+      description: If the container object does not exists previously, it won't be created, instead, an error will be raised. The existent container will be deleted completely before updating, so the default values will be taken for any non-existent value in the request of this method.
+      operationId: completely-update-container
       consumes:
       - application/json
       produces:
@@ -2491,7 +2484,7 @@ paths:
       tags:
       - Diagrams
       summary: Finds a specific component
-      description:
+      description: Finds a specific component
       operationId: get-component
       produces:
       - application/json
@@ -2549,9 +2542,9 @@ paths:
     put:
       tags:
       - Diagrams
-      summary: Completelly update an existent component
-      description: If the component object does not exists previously, it won't be created, instead, an error will be raised. The existent component will be deleted completelly before updating, so the default values will be taken for any non-existent value in the request of this method.
-      operationId: completelly-update-component
+      summary: completely update an existent component
+      description: If the component object does not exists previously, it won't be created, instead, an error will be raised. The existent component will be deleted completely before updating, so the default values will be taken for any non-existent value in the request of this method.
+      operationId: completely-update-component
       consumes:
       - application/json
       produces:
@@ -2588,7 +2581,7 @@ paths:
       - Diagrams
       summary: Finds the systems of a model
       description: This service supports query by using RSQL expressions
-      operationId: get-systems
+      operationId: get-architecture-systems
       produces:
       - application/json
       parameters:
@@ -2652,7 +2645,7 @@ paths:
       tags:
       - Diagrams
       summary: Finds a system of a model
-      description:
+      description: Finds a system of a model
       operationId: get-system
       produces:
       - application/json
@@ -2720,9 +2713,9 @@ paths:
     put:
       tags:
       - Diagrams
-      summary: Completelly update an existent model's system
-      description: If the system object does not exists previously, or it doesn't belongs to the provided model, it won't be created, instead, an error will be raised. The existent container will be deleted completelly before updating, so the default values will be taken for any non-existent value in the request of this mmethod.
-      operationId: completelly-update-model-system
+      summary: completely update an existent model's system
+      description: If the system object does not exists previously, or it doesn't belongs to the provided model, it won't be created, instead, an error will be raised. The existent container will be deleted completely before updating, so the default values will be taken for any non-existent value in the request of this mmethod.
+      operationId: completely-update-model-system
       consumes:
       - application/json
       produces:
@@ -2837,7 +2830,7 @@ paths:
       tags:
       - Diagrams
       summary: Finds a container of a system of a model
-      description:
+      description: Finds a container of a system of a model
       operationId: get-system-container
       produces:
       - application/json
@@ -2915,9 +2908,9 @@ paths:
     put:
       tags:
       - Diagrams
-      summary: Completelly update an existent model's container
-      description: If the container object does not exists previously, or it doesn't belongs to the provided model, it won't be created, instead, an error will be raised. The existent container will be deleted completelly before updating, so the default values will be taken for any non-existent value in the request of this mmethod.
-      operationId: completelly-update-model-container
+      summary: completely update an existent model's container
+      description: If the container object does not exists previously, or it doesn't belongs to the provided model, it won't be created, instead, an error will be raised. The existent container will be deleted completely before updating, so the default values will be taken for any non-existent value in the request of this mmethod.
+      operationId: completely-update-model-container
       consumes:
       - application/json
       produces:
@@ -3362,9 +3355,9 @@ paths:
     put:
       tags:
       - Consumers
-      summary: Completelly update an existent consumer
-      description: If the consumer object does not exists previously, it won't be created, instead, an error will be raised. The existent consumer will be deleted completelly before updating, so the default values will be taken for any non-existent value in the request of this mmethod.
-      operationId: completelly-update-consumer
+      summary: completely update an existent consumer
+      description: If the consumer object does not exists previously, it won't be created, instead, an error will be raised. The existent consumer will be deleted completely before updating, so the default values will be taken for any non-existent value in the request of this mmethod.
+      operationId: completely-update-consumer
       consumes:
       - application/json
       produces:
@@ -3453,7 +3446,7 @@ paths:
           description: Not implemented
       security:
       - openarchi_auth:
-        - write:catalogs
+        - write:catalog
         - read:catalogs
   "/api/catalogs/diagram-types/{diagram-type-id}/shape":
     get:
@@ -3528,9 +3521,9 @@ paths:
     put:
       tags:
       - Catalogs
-      summary: Completelly update an existent element shape or creates a new one
-      description: If the element shape object does not exists previously, it will be created. The existent element shape will be deleted completelly before updating, so the element shape remains only those fields passed in this request.
-      operationId: completelly-update-element-shape
+      summary: completely update an existent element shape or creates a new one
+      description: If the element shape object does not exists previously, it will be created. The existent element shape will be deleted completely before updating, so the element shape remains only those fields passed in this request.
+      operationId: completely-update-diagram-element-shape
       consumes:
       - application/json
       produces:
@@ -3677,9 +3670,9 @@ paths:
     put:
       tags:
       - Catalogs
-      summary: Completelly update an existent color scheme of the shape of the related element type or creates a new one
-      description: If the color scheme object does not exists previously, it will be created. The existent color scheme will be deleted completelly before updating, so from the color scheme remains only those fields passed in this request.
-      operationId: completelly-update-diagram-type-color-scheme
+      summary: completely update an existent color scheme of the shape of the related element type or creates a new one
+      description: If the color scheme object does not exists previously, it will be created. The existent color scheme will be deleted completely before updating, so from the color scheme remains only those fields passed in this request.
+      operationId: completely-update-diagram-type-color-scheme
       consumes:
       - application/json
       produces:
@@ -3828,9 +3821,9 @@ paths:
     put:
       tags:
       - Catalogs
-      summary: Completelly update an existent element shape or creates a new one
-      description: If the element shape object does not exists previously, it will be created. The existent element shape will be deleted completelly before updating, so the element shape remains only those fields passed in this request.
-      operationId: completelly-update-element-shape
+      summary: completely update an existent element shape or creates a new one
+      description: If the element shape object does not exists previously, it will be created. The existent element shape will be deleted completely before updating, so the element shape remains only those fields passed in this request.
+      operationId: completely-update-element-shape
       consumes:
       - application/json
       produces:
@@ -3977,9 +3970,9 @@ paths:
     put:
       tags:
       - Catalogs
-      summary: Completelly update an existent color scheme of the shape of the related element type or creates a new one
-      description: If the color scheme object does not exists previously, it will be created. The existent color scheme will be deleted completelly before updating, so from the color scheme remains only those fields passed in this request.
-      operationId: completelly-update-element-type-color-scheme
+      summary: completely update an existent color scheme of the shape of the related element type or creates a new one
+      description: If the color scheme object does not exists previously, it will be created. The existent color scheme will be deleted completely before updating, so from the color scheme remains only those fields passed in this request.
+      operationId: completely-update-element-type-color-scheme
       consumes:
       - application/json
       produces:
@@ -4113,7 +4106,7 @@ paths:
       security:
       - openarchi_auth:
         - write:catalog
-        - read:catalog
+        - read:catalogs
   "/api/catalogs/prototype-names":
 #    options:
 #      tags:
@@ -4279,13 +4272,14 @@ paths:
           name: modelType
           description: Model type to get its json-schema
           required: true
-          schema:
-            type: string
+          type: string
       responses:
         '200':
           description: OK
           schema:
             type: array
+            items:
+              type: object
         '400':
           description: Bad request
       security:
@@ -4516,11 +4510,503 @@ paths:
       - openarchi_auth:
         - write:palette
         - read:palettes
+
+  "/capabilities":
+    get:
+      tags:
+        - Capabilities
+      summary: Find capabilities
+      description: Returns a list of capabilities.
+
+
+        A capability is some characteristic that can be associated with an element within a model in order to describe some functional, non-functional, technical or behavioral attribute that such element could have. The  capability is used for appending meta-information around a general context organization state, or a specific use case, that is to say, defines a way to evaluate the component thru customized indicators external to the architecture
+      operationId: get-capabilites
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Capability"
+        '204':
+          description: There are no capabilities
+      security:
+        - openarchi_auth:
+            - read:capabilities
+    post:
+      tags:
+        - Capabilities
+      summary: Create a new capability
+      description: Create a new capability.
+
+
+        A capability is some characteristic that can be associated with an element within a model in order to describe some functional, non-functional, technical or behavioral attribute that such element could have. The  capability is used for appending meta-information around a general context organization state, or a specific use case, that is to say, defines a way to evaluate the component thru customized indicators external to the architecture.
+
+
+        When attempting to create a capability, if the provided name already exists, such capability won't be created, instead, an error will be raised, otherwise, a new capability will be created being generated an automated UUID for it.
+      operationId: create-capability
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          description: Capability object that needs to be created
+          required: true
+          schema:
+            $ref: "#/definitions/Capability_Create"
+      responses:
+        '201':
+          description: Capability created
+          headers:
+            Location:
+              type: string
+              description: Relative URL for getting the created capability
+        '405':
+          description: Invalid capability object provided
+      security:
+        - openarchi_auth:
+            - write:capabilities
+  "/capabilities/{capability-id}/dimensions":
+    get:
+      tags:
+        - Capabilities
+      summary: Find dimensions from a provided capability
+      description: Returns a list of dimensions from the provided capability.
+
+
+        A dimension is a category that groups the common characteristics that have a set of defined metrics for the evaluation of the capability
+      operationId: get-capability-dimensions
+      produces:
+        - application/json
+      parameters:
+        - name: capability-id
+          in: path
+          description: ID of the capability for retrieving its dimensions
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Dimension"
+        '204':
+          description: There are no dimensions for capability
+        '404':
+          description: Capability not found
+      security:
+        - openarchi_auth:
+            - read:capabilities
+    post:
+      tags:
+        - Capabilities
+      summary: Create a new dimension within provided capability
+      description: A dimension is a category that groups the common characteristics that have a set of defined metrics for the evaluation of a capability
+
+
+        If the provided dimension's name already exists, it won't be created, instead, an error will be raised. If capability doesn't exists, an error will also be raised. Otherwise, a new dimension will be created and associated to the capability's dimensions list, being generated an automated UUID for it.
+      operationId: create-capability-dimension
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: capability-id
+          in: path
+          description: ID of the capability in which the dimension will be created
+          required: true
+          type: string
+        - name: body
+          in: body
+          description: Dimension object that is going to be created and associated to the provided capability
+          required: true
+          schema:
+            $ref: "#/definitions/Dimension_Create"
+      responses:
+        '201':
+          description: Dimension created
+          headers:
+            Location:
+              type: string
+              description: Relative URL for getting the created dimension
+        '404':
+          description: Capability not found
+        '405':
+          description: Invalid dimension object provided
+      security:
+        - openarchi_auth:
+            - write:capabilities
+  "/dimensions/{dimension-id}":
+    get:
+      tags:
+        - Capabilities
+      summary: Get a specific dimension by its ID
+      description: Returns a specific dimension by ID including its metrics.
+
+
+        A dimension is a category that groups the common characteristics that have a set of defined metrics for the evaluation of a capability.
+
+
+        Metrics define values and thresholds that can be used in formulas to evaluate elements of the model according to the characteristics they have in relation to their underlying purpose.
+
+      operationId: get-dimension
+      produces:
+        - application/json
+      parameters:
+        - name: dimension-id
+          in: path
+          description: ID of the dimension to return
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: "#/definitions/Dimension"
+        '404':
+          description: Dimension not found
+      security:
+        - openarchi_auth:
+            - read:capabilities
+  "/dimensions/{dimension-id}/metrics":
+    get:
+      tags:
+        - Capabilities
+      summary: Find metrics from a provided dimension
+      description: Returns a list of metrics from the provided dimension.
+
+
+        Metrics define values and thresholds that can be used in formulas to evaluate elements of the model according to the characteristics they have in relation to their underlying purpose.
+
+      operationId: get-dimension-metrics
+      produces:
+        - application/json
+      parameters:
+        - name: dimension-id
+          in: path
+          description: ID of the dimension for retrieving its metrics
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Metric"
+        '204':
+          description: There are no metrics for provided dimension
+        '404':
+          description: Dimension not found
+      security:
+        - openarchi_auth:
+            - read:capabilities
+    post:
+      tags:
+        - Capabilities
+      summary: Create a new metric within provided dimension
+      description: Metrics define values and thresholds that can be used in formulas to evaluate elements of the model according to the characteristics they have in relation to their underlying purpose.
+
+
+        If the provided metric's name already exists, it won't be created, instead, an error will be raised. If dimension doesn't exists, an error will also be raised. Otherwise, a new metric will be created and associated to the dimension's metrics list, being generated an automated UUID for it.
+      operationId: create-dimension-metric
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: dimension-id
+          in: path
+          description: ID of the dimension in which the metric will be created
+          required: true
+          type: string
+        - name: body
+          in: body
+          description: Metric object that is going to be created and associated to the provided dimension
+          required: true
+          schema:
+            $ref: "#/definitions/Metric_Create"
+      responses:
+        '201':
+          description: Metric created
+          headers:
+            Location:
+              type: string
+              description: Relative URL for getting the created metric
+        '404':
+          description: Metric not found
+        '405':
+          description: Invalid metric object provided
+      security:
+        - openarchi_auth:
+            - write:capabilities
+  "/metrics/{metric-id}":
+    get:
+      tags:
+        - Capabilities
+      summary: Get a specific metric by its ID
+      description: Returns a specific metric by ID including its thresholds.
+
+
+        Metrics define values and thresholds that can be used in formulas to evaluate elements of the model according to the characteristics they have in relation to their underlying purpose.
+
+      operationId: get-metric
+      produces:
+        - application/json
+      parameters:
+        - name: metric-id
+          in: path
+          description: ID of the metric to return
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: "#/definitions/Metric"
+        '404':
+          description: Metric not found
+      security:
+        - openarchi_auth:
+            - read:capabilities
+  "/metrics/{metric-id}/base-thresholds":
+    get:
+      tags:
+        - Capabilities
+      summary: Find base thresholds from a provided metric
+      description: Returns a list of base thresholds from the provided metric.
+
+
+        Metrics define values and base thresholds that can be used in formulas to evaluate elements of the model according to the characteristics they have in relation to their underlying purpose.
+
+
+        Base thresholds are magnitudes or values that modify the interpretation of the metric if the measurement of a certain characteristic of the elements within a model reaches or exceeds them.
+
+      operationId: get-metric-base-thresholds
+      produces:
+        - application/json
+      parameters:
+        - name: metric-id
+          in: path
+          description: ID of the metric for retrieving its base thresholds
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Base_Threshold"
+        '204':
+          description: There are no base thresholds for provided metric
+        '404':
+          description: metric not found
+      security:
+        - openarchi_auth:
+            - read:capabilities
+    put:
+      tags:
+        - Capabilities
+      summary: Create a new base threshold within the provided metric
+      description: Create a new base threshold within the provided metric.
+
+        Metrics define values and base thresholds that can be used in formulas to evaluate elements of the model according to the characteristics they have in relation to their underlying purpose.
+
+
+        Base thresholds are magnitudes or values that modify the interpretation of the metric if the measurement of a certain characteristic of the elements within a model reaches or exceeds them.
+
+        If the provided threshold's name already exists, it won't be created, instead, an error will be raised. If metric doesn't exists, an error will also be raised. Otherwise, a new base threshold will be created and associated to the metric's base thresholds list, being generated an automated UUID for it.
+      operationId: create-metric-base-threshold
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: metric-id
+          in: path
+          description: ID of the metric in which the base threshold will be created
+          required: true
+          type: string
+        - name: body
+          in: body
+          description: Base threshold object that is going to be created and associated to the provided metric
+          required: true
+          schema:
+            $ref: "#/definitions/Base_Threshold_Create"
+      responses:
+        '201':
+          description: Base threshold created
+          headers:
+            Location:
+              type: string
+              description: Relative URL for getting the created base threshold
+        '404':
+          description: Base threshold not found
+        '405':
+          description: Invalid base threshold object provided
+      security:
+        - openarchi_auth:
+            - write:capabilities
+  "/metrics/{metric-id}/base-thresholds/{base-threshold-id}":
+    get:
+      tags:
+        - Capabilities
+      summary: Get a specific base threshold by its ID
+      description: Returns a specific base threshold.
+
+
+        Base thresholds are magnitudes or values that modify the interpretation of the metric if the measurement of a certain characteristic of the elements within a model reaches or exceeds them.
+
+
+      operationId: get-base-threshold
+      produces:
+        - application/json
+      parameters:
+        - name: metric-id
+          in: path
+          description: ID of the metric for retrieving its base thresholds
+          required: true
+          type: string
+        - name: base-threshold-id
+          in: path
+          description: ID of the base threshold to return
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: "#/definitions/Base_Threshold"
+        '404':
+          description: Base threshold not found
+      security:
+        - openarchi_auth:
+            - read:capabilities
+  "/metrics/{metric-id}/thresholds":
+    get:
+      tags:
+        - Capabilities
+      summary: Find thresholds from a provided metric
+      description: Returns a list of thresholds from the provided metric.
+
+
+        Metrics define values and thresholds that can be used in formulas to evaluate elements of the model according to the characteristics they have in relation to their underlying purpose.
+
+
+        Thresholds are magnitudes or values that modify the interpretation of the metric if the measurement of a certain characteristic of the elements within a model reaches or exceeds them.
+
+      operationId: get-metric-thresholds
+      produces:
+        - application/json
+      parameters:
+        - name: metric-id
+          in: path
+          description: ID of the metric for retrieving its thresholds
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Threshold"
+        '204':
+          description: There are no thresholds for provided metric
+        '404':
+          description: metric not found
+      security:
+        - openarchi_auth:
+            - read:capabilities
+    put:
+      tags:
+        - Capabilities
+      summary: Create a new threshold within the provided metric
+      description: Create a new threshold within the provided metric.
+
+        Metrics define values and thresholds that can be used in formulas to evaluate elements of the model according to the characteristics they have in relation to their underlying purpose.
+
+
+        Thresholds are magnitudes or values that modify the interpretation of the metric if the measurement of a certain characteristic of the elements within a model reaches or exceeds them.
+
+        If the provided threshold's name already exists, it won't be created, instead, an error will be raised. If metric doesn't exists, an error will also be raised. Otherwise, a new threshold will be created and associated to the metric's thresholds list, being generated an automated UUID for it.
+      operationId: create-metric-threshold
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: metric-id
+          in: path
+          description: ID of the metric in which the threshold will be created
+          required: true
+          type: string
+        - name: body
+          in: body
+          description: threshold object that is going to be created and associated to the provided metric
+          required: true
+          schema:
+            $ref: "#/definitions/Threshold_Create"
+      responses:
+        '201':
+          description: Threshold created
+          headers:
+            Location:
+              type: string
+              description: Relative URL for getting the created threshold
+        '404':
+          description: Threshold not found
+        '405':
+          description: Invalid Threshold object provided
+      security:
+        - openarchi_auth:
+            - write:capabilities
+  "/metrics/{metric-id}/thresholds/{threshold-id}":
+    get:
+      tags:
+        - Capabilities
+      summary: Get a specific threshold by its ID
+      description: Returns a specific threshold.
+
+
+        Thresholds are magnitudes or values that modify the interpretation of the metric if the measurement of a certain characteristic of the elements within a model reaches or exceeds them.
+
+
+      operationId: get-threshold
+      produces:
+        - application/json
+      parameters:
+        - name: metric-id
+          in: path
+          description: ID of the metric for retrieving its base thresholds
+          required: true
+          type: string
+        - name: threshold-id
+          in: path
+          description: ID of the threshold to return
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: "#/definitions/Threshold"
+        '404':
+          description: threshold not found
+      security:
+        - openarchi_auth:
+            - read:capabilities
+
 securityDefinitions:
   openarchi_auth:
     type: oauth2
     authorizationUrl: http://${DEPLOYED_SERVER}/login
-    tokenUrl: http://${DEPLOYED_SERVER}/oauth/token
     flow: implicit
     scopes:
       delete:model: Delete a model
@@ -4532,11 +5018,9 @@ securityDefinitions:
       delete:palette: Delete a palette
       write:palette: Modify or add an element to a palette
       read:palettes: Read palette elements
+      read:capabilities: Read capabilities
+      write:capabilities: Write capabilities
       admin: Full administrative rights
-  api_key:
-    type: apiKey
-    name: apiKey
-    in: header
 definitions:
   Account:
     description: Account
@@ -4845,6 +5329,31 @@ definitions:
           - BIDIRECTIONAL
       required:
       - type
+  Base_Threshold:
+    type: object
+    description: Base threshold
+    allOf:
+      - $ref: "#/definitions/Capability_Base_Entity"
+      - type: object
+        properties:
+          value:
+            type: string
+            description: Value for this threshold
+    required:
+      - value
+  Base_Threshold_Create:
+    type: object
+    description: Base threshold creation
+    properties:
+      id:
+        type: string
+        description: Base threshold ID to be created
+      value:
+        type: string
+        description: Value for this threshold
+    required:
+      - name
+      - value
   Consumer:
     type: object
     allOf:
@@ -5077,6 +5586,70 @@ definitions:
     required:
     - id
     - type
+  Capability:
+    type: object
+    description: Capability
+    allOf:
+      - $ref: "#/definitions/Capability_Named_Base_Entity"
+      - type: object
+        properties:
+          dimensions:
+            type: array
+            description: Dimensions within a capability
+            items:
+              $ref: "#/definitions/Dimension"
+  Capability_Create:
+    type: object
+    description: Capability creation
+    properties:
+      name:
+        type: string
+        description: Capability name to be created
+    required:
+      - name
+  Capability_Base_Entity:
+    type: object
+    description: Basic entity info for capabilities model
+    properties:
+      id:
+        type: string
+        description: Identifier
+    required:
+      - id
+  Capability_Named_Base_Entity:
+    type: object
+    description: Basic entity info for capabilities model
+    properties:
+      id:
+        type: string
+        description: Identifier
+      name:
+        type: string
+        description: Name
+    required:
+      - id
+      - name
+  Dimension:
+    type: object
+    description: Dimension
+    allOf:
+      - $ref: "#/definitions/Capability_Named_Base_Entity"
+      - type: object
+        properties:
+          metrics:
+            type: array
+            description: Metric of a dimension
+            items:
+              $ref: "#/definitions/Metric"
+  Dimension_Create:
+    type: object
+    description: Dimension creation
+    properties:
+      name:
+        type: string
+        description: Dimension name to be created
+    required:
+      - name
   Element:
     type: object
     description: Abstract element object
@@ -6213,6 +6786,31 @@ definitions:
         - CONTAINER
         - DEPLOYMENT
         - BPM
+
+  Metric:
+    type: object
+    description: Metric
+    allOf:
+      - $ref: "#/definitions/Capability_Named_Base_Entity"
+      - type: object
+        properties:
+          baseThreshold:
+            $ref: "#/definitions/Base_Threshold"
+          thresholds:
+            type: array
+            description: Additional, complementary and optional thresholds to be appended to the base threshold
+            items:
+              $ref: "#/definitions/Threshold"
+
+  Metric_Create:
+    type: object
+    description: Metric creation
+    properties:
+      name:
+        type: string
+        description: Metric name to be created
+    required:
+      - name
   Options_Input_Item:
     type: object
     properties:
@@ -6592,7 +7190,7 @@ definitions:
       priority:
         type: integer
   Rule_Message:
-    description:
+    description: Rule message
     type: object
     properties:
       type:
@@ -7008,6 +7606,21 @@ definitions:
           - IN_PROGRESS
           - PUBLISHED
           - DEPRECATED
+  Threshold:
+    type: object
+    description: Threshold
+    allOf:
+      - $ref: "#/definitions/Base_Threshold"
+      - type: object
+        properties:
+          overridesBase:
+            type: boolean
+            description: Indicates whether this threshold overrides the same one (by ID) from base threshold.
+  Threshold_Create:
+    type: object
+    description: Threshold creation
+    allOf:
+      - $ref: "#/definitions/Base_Threshold_Create"
   Constraint:
     type: object
   Constraint_Create:
@@ -7086,3 +7699,4 @@ definitions:
           description: Name of the view
       required:
       - name
+      
