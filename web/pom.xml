@@ -68,6 +68,10 @@
             <groupId>com.araguacaima.open_archi</groupId>
             <artifactId>persistence-component</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.araguacaima.open_archi</groupId>
+            <artifactId>persistence-commons-capabilities</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>com.araguacaima</groupId>
@@ -245,7 +249,6 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
         </dependency>
-
 
     </dependencies>
 

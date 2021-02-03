@@ -12,11 +12,12 @@ public class Api implements RouteGroup {
 
     public static final String PATH = "/api";
 
-    private Diagrams diagrams = new Diagrams();
-    private Models models = new Models();
-    private Catalogs catalogs = new Catalogs();
-    private Consumers consumers = new Consumers();
-    private Palettes palettes = new Palettes();
+    private final Diagrams diagrams = new Diagrams();
+    private final Models models = new Models();
+    private final Catalogs catalogs = new Catalogs();
+    private final Consumers consumers = new Consumers();
+    private final Palettes palettes = new Palettes();
+    private final Capabilities capabilities = new Capabilities();
 
     @Override
     public void addRoutes() {
@@ -37,6 +38,9 @@ public class Api implements RouteGroup {
         //before(Palettes.PATH, OpenArchi.apiFilter);
         path(Palettes.PATH, palettes);
         path(Palettes.PATH + Commons.SEPARATOR_PATH, palettes);
+        //before(Capabilities.PATH, OpenArchi.apiFilter);
+        path(Capabilities.PATH, capabilities);
+        path(Capabilities.PATH + Commons.SEPARATOR_PATH, capabilities);
     }
 
 }

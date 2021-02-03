@@ -8,8 +8,15 @@ import java.util.Set;
 
 @Entity
 @PersistenceUnit(unitName = "open-archi")
+@NamedQueries({@NamedQuery(name = Capability.GET_ALL_CAPABILITIES,
+        query = "select c " +
+                "from com.araguacaima.open_archi.persistence.capabilities.commons.Capability c"),
+        @NamedQuery(name = Capability.GET_ALL_DIMENSIONS,
+                query = "select c.dimensions " +
+                        "from com.araguacaima.open_archi.persistence.capabilities.commons.Capability c where c.id = :id")})
 public class Capability extends NamedBaseEntity {
-
+    public static final String GET_ALL_CAPABILITIES = "get.all.capabilities";
+    public static final String GET_ALL_DIMENSIONS = "get.all.dimensions";
     @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany(cascade = CascadeType.REMOVE)
     @JoinTable(schema = "Diagrams",

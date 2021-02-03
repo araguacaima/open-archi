@@ -1,5 +1,7 @@
 package com.araguacaima.open_archi.persistence.capabilities.commons;
 
+import com.araguacaima.open_archi.persistence.diagrams.core.BaseEntity;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PersistenceUnit;
@@ -17,5 +19,10 @@ public class BaseThreshold extends BaseEntity {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }

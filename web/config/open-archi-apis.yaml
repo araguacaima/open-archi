@@ -4511,7 +4511,7 @@ paths:
         - write:palette
         - read:palettes
 
-  "/capabilities":
+  "/api/capabilities":
     get:
       tags:
         - Capabilities
@@ -4521,6 +4521,17 @@ paths:
 
         A capability is some characteristic that can be associated with an element within a model in order to describe some functional, non-functional, technical or behavioral attribute that such element could have. The  capability is used for appending meta-information around a general context organization state, or a specific use case, that is to say, defines a way to evaluate the component thru customized indicators external to the architecture
       operationId: get-capabilites
+      parameters:
+        - name: query
+          in: query
+          description: Filter capabilities according to an RSQL expression
+          required: false
+          type: string
+        - name: name
+          in: query
+          description: Filter capabilities by name
+          required: false
+          type: string
       produces:
         - application/json
       responses:
@@ -4570,7 +4581,7 @@ paths:
       security:
         - openarchi_auth:
             - write:capabilities
-  "/capabilities/{capability-id}/dimensions":
+  "/api/capabilities/{capability-id}/dimensions":
     get:
       tags:
         - Capabilities
@@ -4587,6 +4598,16 @@ paths:
           in: path
           description: ID of the capability for retrieving its dimensions
           required: true
+          type: string
+        - name: query
+          in: query
+          description: Filter capability's dimensions according to an RSQL expression
+          required: false
+          type: string
+        - name: name
+          in: query
+          description: Filter capability's dimensions by name
+          required: false
           type: string
       responses:
         '200':
@@ -4641,7 +4662,7 @@ paths:
       security:
         - openarchi_auth:
             - write:capabilities
-  "/dimensions/{dimension-id}":
+  "/api/dimensions/{dimension-id}":
     get:
       tags:
         - Capabilities
@@ -4673,7 +4694,7 @@ paths:
       security:
         - openarchi_auth:
             - read:capabilities
-  "/dimensions/{dimension-id}/metrics":
+  "/api/dimensions/{dimension-id}/metrics":
     get:
       tags:
         - Capabilities
@@ -4682,7 +4703,6 @@ paths:
 
 
         Metrics define values and thresholds that can be used in formulas to evaluate elements of the model according to the characteristics they have in relation to their underlying purpose.
-
       operationId: get-dimension-metrics
       produces:
         - application/json
@@ -4691,6 +4711,16 @@ paths:
           in: path
           description: ID of the dimension for retrieving its metrics
           required: true
+          type: string
+        - name: query
+          in: query
+          description: Filter dimension's metric according to an RSQL expression
+          required: false
+          type: string
+        - name: name
+          in: query
+          description: Filter dimension's metric by name
+          required: false
           type: string
       responses:
         '200':
@@ -4745,7 +4775,7 @@ paths:
       security:
         - openarchi_auth:
             - write:capabilities
-  "/metrics/{metric-id}":
+  "/api/metrics/{metric-id}":
     get:
       tags:
         - Capabilities
@@ -4774,7 +4804,7 @@ paths:
       security:
         - openarchi_auth:
             - read:capabilities
-  "/metrics/{metric-id}/base-thresholds":
+  "/api/metrics/{metric-id}/base-thresholds":
     get:
       tags:
         - Capabilities
@@ -4786,7 +4816,6 @@ paths:
 
 
         Base thresholds are magnitudes or values that modify the interpretation of the metric if the measurement of a certain characteristic of the elements within a model reaches or exceeds them.
-
       operationId: get-metric-base-thresholds
       produces:
         - application/json
@@ -4795,6 +4824,11 @@ paths:
           in: path
           description: ID of the metric for retrieving its base thresholds
           required: true
+          type: string
+        - name: query
+          in: query
+          description: Filter metric's base thresholds according to an RSQL expression
+          required: false
           type: string
       responses:
         '200':
@@ -4853,7 +4887,7 @@ paths:
       security:
         - openarchi_auth:
             - write:capabilities
-  "/metrics/{metric-id}/base-thresholds/{base-threshold-id}":
+  "/api/metrics/{metric-id}/base-thresholds/{base-threshold-id}":
     get:
       tags:
         - Capabilities
@@ -4888,7 +4922,7 @@ paths:
       security:
         - openarchi_auth:
             - read:capabilities
-  "/metrics/{metric-id}/thresholds":
+  "/api/metrics/{metric-id}/thresholds":
     get:
       tags:
         - Capabilities
@@ -4900,7 +4934,6 @@ paths:
 
 
         Thresholds are magnitudes or values that modify the interpretation of the metric if the measurement of a certain characteristic of the elements within a model reaches or exceeds them.
-
       operationId: get-metric-thresholds
       produces:
         - application/json
@@ -4909,6 +4942,11 @@ paths:
           in: path
           description: ID of the metric for retrieving its thresholds
           required: true
+          type: string
+        - name: query
+          in: query
+          description: Filter metric's thresholds according to an RSQL expression
+          required: false
           type: string
       responses:
         '200':
@@ -4967,7 +5005,7 @@ paths:
       security:
         - openarchi_auth:
             - write:capabilities
-  "/metrics/{metric-id}/thresholds/{threshold-id}":
+  "/api/metrics/{metric-id}/thresholds/{threshold-id}":
     get:
       tags:
         - Capabilities

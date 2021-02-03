@@ -1,17 +1,14 @@
 package com.araguacaima.open_archi.persistence.capabilities.commons;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.araguacaima.open_archi.persistence.diagrams.core.BaseEntity;
 
 import javax.persistence.Column;
-import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PersistenceUnit;
-import javax.validation.constraints.NotNull;
-import java.util.UUID;
 
 @MappedSuperclass
 @PersistenceUnit(unitName = "open-archi")
-public abstract class NamedBaseEntity extends BaseEntity{
+public abstract class NamedBaseEntity extends BaseEntity {
 
     @Column(name = "Name")
     private String name;
@@ -24,4 +21,9 @@ public abstract class NamedBaseEntity extends BaseEntity{
         this.name = name;
     }
 
+    @Override
+    public int compareTo(Object o) {
+        if (o == null) return 1;
+        return this.name.compareTo(((NamedBaseEntity) o).getName());
+    }
 }
