@@ -1,6 +1,7 @@
 package com.araguacaima.open_archi.web;
 
 import com.araguacaima.commons.utils.ReflectionUtils;
+import com.araguacaima.open_archi.persistence.capabilities.commons.Capability;
 import com.araguacaima.open_archi.persistence.commons.Config;
 import com.araguacaima.open_archi.persistence.commons.ConfigValues;
 import com.araguacaima.open_archi.persistence.commons.exceptions.*;
@@ -429,6 +430,8 @@ public class DBUtil {
                         DBPersist.Groups.process((Group) entity1);
                     } else if (ComponentElement.class.isAssignableFrom(clazz)) {
                         DBPersist.ComponentElements.process((ComponentElement) entity1);
+                    } else if (Capability.class.isAssignableFrom(clazz)) {
+                        OrpheusDbJPAEntityManagerUtils.persist(entity1);
                     }
 //                } else {
 //                    OrpheusDbJPAEntityManagerUtils.merge(entity1);

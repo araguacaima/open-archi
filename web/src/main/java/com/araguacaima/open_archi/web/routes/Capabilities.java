@@ -32,7 +32,7 @@ get /metrics/:metric-id/thresholds/:threshold-id*/
 
     @Override
     public void addRoutes() {
-        get(Commons.EMPTY_PATH, (request, response) -> getList(request, response, Capability.GET_ALL_CAPABILITIES, null, null));
+        get(Commons.EMPTY_PATH, (request, response) -> getList(request, response, Capability.GET_ALL_CAPABILITIES, null, Capability.class));
         post(Commons.EMPTY_PATH, (request, response) -> {
             try {
                 Capability capability = jsonUtils.fromJSON(request.body(), Capability.class);
