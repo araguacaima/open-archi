@@ -111,7 +111,7 @@
         <org.codehaus.mojo-aspectj-maven-plugin>1.8</org.codehaus.mojo-aspectj-maven-plugin>
         <org.codehaus.plexus-plexus-utils>3.0.8</org.codehaus.plexus-plexus-utils>
         <org.fusesource.jansi-jansi>1.16</org.fusesource.jansi-jansi>
-        <org.hibernate-version>5.3.1.Final</org.hibernate-version>
+        <org.hibernate-version>5.4.24.Final</org.hibernate-version>
         <org.wildfly.transaction-wildfly-transaction-client>1.1.3.Final
         </org.wildfly.transaction-wildfly-transaction-client>
         <org.hibernate-hibernate-ogm-core>5.4.1.Final</org.hibernate-hibernate-ogm-core>
