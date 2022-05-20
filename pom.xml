@@ -140,7 +140,7 @@
         </com.fasterxml.jackson.dataformat-jackson-dataformat-yaml>
         <de.neuland-bfi-jade4j>1.2.5</de.neuland-bfi-jade4j>
         <com.sun.mail-javax.mail>1.6.2</com.sun.mail-javax.mail>
-        <com.google.code.gson-gson>2.8.5</com.google.code.gson-gson>
+        <com.google.code.gson-gson>2.8.9</com.google.code.gson-gson>
     </properties>
 
     <dependencyManagement>
