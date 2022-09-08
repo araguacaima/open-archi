@@ -119,7 +119,7 @@
         </org.hibernate.javax.persistence-hibernate-jpa-2.1-api>
         <org.jsoup-jsoup>1.8.1</org.jsoup-jsoup>
         <org.mockito-mockito-core>1.9.5</org.mockito-mockito-core>
-        <org.postgresql-postgresql>42.2.4</org.postgresql-postgresql>
+        <org.postgresql-postgresql>42.4.1</org.postgresql-postgresql>
         <org.reflections-reflections>0.9.9-RC1</org.reflections-reflections>
         <org.scala-lang-scala-library>2.10.4</org.scala-lang-scala-library>
         <org.slf4j-slf4j-api>1.7.7</org.slf4j-slf4j-api>
